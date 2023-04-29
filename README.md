@@ -1,4 +1,4 @@
-##Liteflix
+## Liteflix
 
 This web application retrieves data from https://api.themoviedb.org/ to display a highlighted movie as the featured movie and 4 other popular movies in a caroussel with a Netflix-ish design
 It also allows the user to upload a movie poster and title, and later check the list of movies added by the user
