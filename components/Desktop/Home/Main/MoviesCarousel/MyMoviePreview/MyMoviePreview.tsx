@@ -1,10 +1,8 @@
-import { MyMovie } from '@/backend/models/MyMovie';
+import { type MyMovie } from '@/backend/models/MyMovie'
 import * as SC from './styles'
 
-
-export default function MyMoviePreview({movie}:{movie:MyMovie}){
-    
-    return(
+export default function MyMoviePreview ({ movie }: { movie: MyMovie }): JSX.Element {
+  return (
         <>
             <SC.Card img={movie.imagePath}>
                 <SC.Title>
@@ -12,5 +10,5 @@ export default function MyMoviePreview({movie}:{movie:MyMovie}){
                 </SC.Title>
             </SC.Card>
         </>
-    )
+  )
 }

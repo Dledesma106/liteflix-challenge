@@ -8,8 +8,8 @@ export const ButtonWrapper = styled.div`
     justify-content:center;
     transform:translateY(-50%) translateX(50%);
 `
-    
-export const MovieImage = styled.div<{img:string}>`
+
+export const MovieImage = styled.div<{ img: string }>`
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 22.78%, #000000 122.69%), url('${props => props.img}');
     background-size: cover;
     color: #fff;
@@ -39,4 +39,3 @@ export const Title = styled.h3`
     font-size: 16px;
     line-height: 16px;
 `
-

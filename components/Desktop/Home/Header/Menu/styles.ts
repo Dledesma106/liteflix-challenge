@@ -40,4 +40,3 @@ export const ItemsWrapper = styled.div`
     justify-content: space-between;
     margin-top:65px;
 `
-

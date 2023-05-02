@@ -17,9 +17,8 @@ export const MoviesWrapper = styled.div`
     overflow:hidden;
 `
 
-export const Chevron = styled.div<{show:boolean}>`
+export const Chevron = styled.div<{ show: boolean }>`
     width: 20px;
     height: 8px;
-    ${({show})=> !show?'display:none;':''};
+    ${({ show }) => !show ? 'display:none;' : ''};
 `
-

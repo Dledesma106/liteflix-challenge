@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Card = styled.div<{img:string}>`
+export const Card = styled.div<{ img: string }>`
     background-image: url('${props => props.img}');
     background-size: cover;
     color: #fff;
@@ -19,5 +19,3 @@ export const Title = styled.h3`
     font-size: 16px;
     line-height: 16px;
 `
-
-

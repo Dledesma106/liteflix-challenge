@@ -1,5 +1,5 @@
+import Image from 'next/image'
 import styled from 'styled-components'
-
 
 export const Wrapper = styled.div`
     display: flex;
@@ -27,7 +27,17 @@ export const ButtonWrapper = styled.div`
     gap:24px;
 `
 
-export const Button = styled.div<{transparent?:boolean}>`
+export const PlusIcon = styled(Image)`
+    width: 16px;
+    height: 16px;
+`
+
+export const PlayIcon = styled(Image)`
+    width: 16px;
+    height: 16px;
+`
+
+export const Button = styled.div<{ transparent?: boolean }>`
     display: flex;
     flex-direction: row;
     width:248px;
@@ -39,7 +49,7 @@ export const Button = styled.div<{transparent?:boolean}>`
     padding:19px 61px;
     background-color: #242424;
     
-    ${({transparent})=>transparent &&`
+    ${({ transparent }) => transparent as boolean && `
         border:solid 1px #fff;
         background-color:rgb(36,36,36, 0.5);
     `}

@@ -1,30 +1,30 @@
-import { Card, Item } from "./styles"
-import Image from "next/image";
-import { MenuHeader, RightWrapper, ItemsWrapper} from "./styles";
+import { Card, Item, MenuHeader, RightWrapper, ItemsWrapper } from './styles'
+import Image from 'next/image'
+
 import cross from 'assets/cross.svg'
 import notification from 'assets/notification.svg'
 import profile from 'assets/profile.png'
-import AddMovieButton from "../AddMovieButton/AddMovieButton";
+import AddMovieButton from '../AddMovieButton/AddMovieButton'
 
 const menuItems = [
-    'Inicio',
-    'Series',
-    'Peliculas',
-    'Agregadas Recientemente',
-    'Populares',
-    'Mis Peliculas',
-    'Mi Lista',
-    'Agregar Pelicula',
-    'Cerrar Sesion'
+  'Inicio',
+  'Series',
+  'Peliculas',
+  'Agregadas Recientemente',
+  'Populares',
+  'Mis Peliculas',
+  'Mi Lista',
+  'Agregar Pelicula',
+  'Cerrar Sesion'
 ]
 
-interface props{
-    show:boolean;
-    toggle:()=>void;
+interface props {
+  show: boolean
+  toggle: () => void
 }
 
-const Menu = ({show, toggle}:props)=>{
-    return (
+const Menu = ({ show, toggle }: props): JSX.Element => {
+  return (
         <>
         {
             show && <Card>
@@ -36,15 +36,12 @@ const Menu = ({show, toggle}:props)=>{
                     </RightWrapper>
                 </MenuHeader>
                 <ItemsWrapper>
-                    {menuItems.map(item => item==='Agregar Pelicula'?<AddMovieButton menu/>:<Item>{item}</Item>)}
+                    {menuItems.map((item, index) => item === 'Agregar Pelicula' ? <AddMovieButton menu key={index}/> : <Item key={index}>{item}</Item>)}
                 </ItemsWrapper>
             </Card>
         }
         </>
-    )
+  )
 }
-
-
-
 
 export default Menu

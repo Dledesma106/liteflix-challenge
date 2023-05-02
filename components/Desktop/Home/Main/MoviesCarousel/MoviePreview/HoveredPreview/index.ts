@@ -1,1 +1,1 @@
-export {default} from './HoveredPreview'
+export { default } from './HoveredPreview'

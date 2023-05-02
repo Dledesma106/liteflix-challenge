@@ -1,9 +1,13 @@
 import multer from 'multer'
+import fs from 'fs'
+
+const uploadDir = 'public/upload'
 
 const upload = multer({
     storage: multer.diskStorage({
         destination:function(req, file, callback) {
-            callback(null, 'public/upload')
+            fs.mkdirSync(uploadDir, { recursive: true })
+            callback(null, uploadDir)
         },
         filename: function(req, file, callback) {
             callback(null, file.originalname)

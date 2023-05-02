@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div<{img:string}>`
-    background-image:url('${props =>props.img}');
+export const Wrapper = styled.div<{ img: string }>`
+    background-image:url('${props => props.img}');
     background-size:cover;
     width:100%;
     height: 100%;

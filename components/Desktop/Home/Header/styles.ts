@@ -14,7 +14,6 @@ export const LeftWrapper = styled.div`
     gap:64px;
 `
 
-
 export const RightWrapper = styled.div`
     display:flex;
     flex-direction:row;
