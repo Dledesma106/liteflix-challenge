@@ -23,15 +23,12 @@ const Home = (props: props): JSX.Element => {
 
 export default Home
 
-export async function getServerSideProps (ctx: GetServerSidePropsContext): Promise<{ props: props }> {
-  ctx.res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=1800, stale-while-revalidate=59'
-  )
-  await dbConnect()
-  const dbMovies = await MyMovieModel.find()
-  const highlightedMovie = await getHighlightedMovie()
-  const popularMovies = await getPopularMovies()
-  const myMovies = formatIds(dbMovies) // Hago esto porque el ObjectId de MongoDB no es serializable en React
-  return { props: { highlightedMovie, popularMovies, myMovies } }
+export async function getServerSideProps(ctx: GetServerSidePropsContext): Promise<{ props: props }> {
+	ctx.res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=59')
+	await dbConnect()
+	const dbMovies = await MyMovieModel.find()
+	const highlightedMovie = await getHighlightedMovie()
+	const popularMovies = await getPopularMovies()
+	const myMovies = formatIds(dbMovies) // Hago esto porque el ObjectId de MongoDB no es serializable en React
+	return { props: { highlightedMovie, popularMovies, myMovies } }
 }
