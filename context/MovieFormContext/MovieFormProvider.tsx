@@ -1,26 +1,24 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import MovieFormContext from './MovieFormContext'
 import DesktopMovieForm from 'components/Desktop/MovieForm'
 
-export interface ProviderProps{
-    children:JSX.Element | JSX.Element[]
+export interface ProviderProps {
+	children: JSX.Element | JSX.Element[]
 }
 
-const MovieFormProvider = ({children}:ProviderProps) => {
+const MovieFormProvider = ({ children }: ProviderProps): JSX.Element => {
+	const [show, setShow] = useState<boolean>(false)
 
-    const [show, setShow] = useState<boolean>(false) 
-    
-    function toggleDesktopMovieForm(){
-       setShow(!show)
-    }
+	function toggleDesktopMovieForm(): void {
+		setShow(!show)
+	}
 
-
-    return(
-        <MovieFormContext.Provider value={{toggleDesktopMovieForm}}>
-            {children}
-            <DesktopMovieForm show={show} toggle={toggleDesktopMovieForm}/>
-        </MovieFormContext.Provider>
-    )
+	return (
+		<MovieFormContext.Provider value={{ toggleDesktopMovieForm }}>
+			{children}
+			<DesktopMovieForm show={show} toggle={toggleDesktopMovieForm} />
+		</MovieFormContext.Provider>
+	)
 }
 
 export default MovieFormProvider

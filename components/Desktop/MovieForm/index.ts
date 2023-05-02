@@ -1,1 +1,1 @@
-export {default} from './MovieForm'
+export { default } from './MovieForm'
