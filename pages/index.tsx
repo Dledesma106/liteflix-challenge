@@ -35,7 +35,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
 	await dbConnect()
 	const dbMovies = await MyMovieModel.find()
 	const highlightedMovie = await getHighlightedMovie()
-	const popularMovies = await getPopularMovies()
+	const popularMovies = (await getPopularMovies()).filter((movie) => movie.title !== highlightedMovie.title)
 	const myMovies = formatIds(dbMovies) // Hago esto porque el ObjectId de MongoDB no es serializable en React
 	await dbDisconnect()
 	return { props: { highlightedMovie, popularMovies, myMovies } }

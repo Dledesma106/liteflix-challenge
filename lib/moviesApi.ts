@@ -57,7 +57,7 @@ async function getBaseUrl(): Promise<string> {
 
 export async function getPopularMovies(): Promise<Movie[]> {
 	const movies = await getMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
-	const popularMovies = movies.slice(0, 4)
+	const popularMovies = movies.slice(0, 5)
 	const baseUrl = await getBaseUrl()
 	return popularMovies.map((movie) => trimMovie(movie, baseUrl))
 }
