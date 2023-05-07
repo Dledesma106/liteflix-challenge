@@ -1,9 +1,9 @@
 import { MobileWrapper } from '../styles'
 import React from 'react'
-import { type props } from '../../interfaces'
+import { type MoviesProps } from '../../interfaces'
 import { Wrapper } from './styles'
 
-export const Home = (props: props): JSX.Element => {
+export const Home = (props: MoviesProps): JSX.Element => {
 	return (
 		<MobileWrapper>
 			<Wrapper img={props.highlightedMovie.imagePath} style={{ color: '#FFF' }}>
