@@ -15,18 +15,6 @@ export const UploadForm = styled.form.attrs({ action: '', encType: 'multipart/fo
 	gap: 48px;
 `
 
-export const AddImage = styled.input.attrs({ type: 'file' })`
-	border: #fff 2px dashed;
-	width: 602px;
-	height: 100px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: none;
-	appearance: none;
-	background-color: #242424;
-`
-
 export const TitleInput = styled.input`
 	background-color: #242424;
 	border: none;

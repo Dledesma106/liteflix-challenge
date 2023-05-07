@@ -43,7 +43,8 @@ export const DropdownDiamond = styled.div`
 export const ItemsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
+	gap: 16px;
 `
 
 export const ChevronDown = styled(Image).attrs({ src: down, alt: 'chevron abajo' })`

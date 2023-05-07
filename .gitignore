@@ -12,9 +12,6 @@
 /.next/
 /out/
 
-# uploaded images
-/public/uploads
-
 # production
 /build
 

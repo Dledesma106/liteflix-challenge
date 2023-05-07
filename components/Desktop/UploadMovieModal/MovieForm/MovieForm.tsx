@@ -31,7 +31,6 @@ const MovieForm = ({
 	const [file, setFile] = useState<File | null>(null)
 	const { addMovie } = useMyMovies()
 	const fieldName = 'image'
-	const uploadComplete = uploadProgress === 100
 	const cancelTokenSourceRef = useRef<CancelTokenSource>(null) as MutableRefObject<CancelTokenSource | null>
 	const resetUpload = (): void => {
 		setFile(null)
@@ -109,7 +108,7 @@ const MovieForm = ({
 			: <FileInput onChange={imageChange} onDrop={onImageDrop} />
 			}
 			<TitleInput placeholder="título" onChange={titleChange} name="title" value={movie.title} />
-			<Button disabled={!uploadComplete || movie.title === ''}> Subir Película </Button>
+			<Button disabled={movie.imagePath === '' || movie.title === ''}> Subir Película </Button>
 		</UploadForm>
 	)
 }

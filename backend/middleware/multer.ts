@@ -1,24 +1,25 @@
 import multer from 'multer'
-import fs from 'fs'
+import { S3Client } from '@aws-sdk/client-s3'
+import multerS3 from 'multer-s3'
 
-const uploadDir = 'public/uploads'
+const newS3: S3Client = new S3Client({
+	region: process.env.AWS_REGION,
+  	credentials: {
+    	accessKeyId: process.env.AWS_ACCESS_KEY_ID as string,
+    	secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY as string
+  	}
+})
 
 const uploadImage = multer({
-	storage: multer.diskStorage({
-		destination: function (req, file, callback) {
-			fs.mkdirSync(uploadDir, { recursive: true })
-			callback(null, uploadDir)
-		},
-		filename: function (req, file, callback) {
-			callback(null, `${Date.now()}-${file.originalname}`)
+	storage: multerS3({
+		s3: newS3,
+		bucket: process.env.AWS_S3_BUCKET_NAME ?? '',
+		key: (req, file, cb) => {
+		  cb(null, `${Date.now().toString()}-${file.originalname}`)
 		}
-	}),
-	limits: {
-		fileSize: 10 * 1024 * 1024 // limite de 10 mb
-	},
-	fileFilter: function (req, file, cb) {
-		const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg']
-
+	  }),
+	fileFilter: (req, file, cb) => {
+		const allowedTypes = ['image/png', 'image/jpg', 'image/jpeg']
 		if (allowedTypes.includes(file.mimetype)) {
 			cb(null, true)
 		} else {

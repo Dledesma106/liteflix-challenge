@@ -7,8 +7,13 @@ export const StyledItem = styled.li<{ selected: boolean }>`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	height: 16px;
 	font-size: 16px;
-	font-weight: ${({ selected }) => (selected ? '700' : '400')};
+	font-weight: 400;
+	
+	${({ selected }) => selected && `
+		font-weight: 700;
+	`};
 `
 export const TickIcon = styled(Image).attrs({ src: tick, alt: 'simbolo de chequeado' })`
 	width: 15px;

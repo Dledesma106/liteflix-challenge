@@ -1,7 +1,28 @@
 import { type NextApiRequest } from 'next'
 
+interface MulterS3File {
+	fieldname: string
+	originalname: string
+	encoding: string
+	mimetype: string
+	size: number
+	bucket: string
+	key: string
+	acl: string
+	contentType: string
+	contentDisposition: null
+	storageClass: string
+	serverSideEncryption: null
+	metadata: {
+	  fieldname: string
+	}
+	location: string
+	etag: string
+	versionId: string
+  }
+
 export interface NextConnectApiRequest extends NextApiRequest {
-	file: Express.Multer.File
+	file: MulterS3File
 	filename: string
 }
 

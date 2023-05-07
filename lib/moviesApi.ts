@@ -38,7 +38,7 @@ function trimMovie(movie: MovieDTO, imageBase: string): Movie {
 		title: movie.title,
 		imagePath: `${imageBase}w500${movie.backdrop_path}`,
 		rating: movie.vote_average,
-		description: movie.overview,
+		description: movie.overview.slice(0, 90),
 		year: movie.release_date.slice(0, moviesCount),
 		liked: false,
 		added: false

@@ -14,12 +14,10 @@ const MyMovieController = {
 			const newMovie = await MyMovieModel.create({ title, imagePath, liked, added })
 			console.log('created new movie')
 			if (newMovie === undefined) return res.json({ statusCode: 400, data: { message: 'Could not add the movie' } })
-			await dbDisconnect()
 			console.log('closed db connection')
 			res.json({ statusCode: 200, data: { message: 'Movie added succesfully' } })
 		} catch (error) {
 			console.log(error)
-			await dbDisconnect()
 			res.json({ statusCode: 500, error: error as string })
 		}
 	},
