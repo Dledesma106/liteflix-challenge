@@ -1,15 +1,14 @@
-import { type Movie } from '@/lib/moviesApi'
-import Image from 'next/image'
-import playButton from 'assets/play-button.svg'
-import { ButtonWrapper, Card, Title, MovieImage } from './styles'
+import { type Movie } from 'lib/moviesApi'
+import { Wrapper } from './styles'
 import { useState } from 'react'
 import HoveredPreview from './HoveredPreview/HoveredPreview'
+import Preview from '../Common/Preview/Preview'
 
-interface props {
+interface MoviePreviewProps {
 	movie: Movie
 	changeIconState: (title: string, name: string, value: boolean) => void
 }
-export default function MoviePreview({ movie, changeIconState }: props): JSX.Element {
+export default function MoviePreview({ movie, changeIconState }: MoviePreviewProps): JSX.Element {
 	const [hovered, setHovered] = useState<boolean>(false)
 
 	const handleHover = (): void => {
@@ -21,18 +20,9 @@ export default function MoviePreview({ movie, changeIconState }: props): JSX.Ele
 	}
 
 	return (
-		<>
-			{!hovered && (
-				<Card onMouseEnter={handleHover}>
-					<MovieImage img={movie.imagePath}>
-						<ButtonWrapper>
-							<Image src={playButton} height={40} width={40} alt="boton de reproduccion" />
-						</ButtonWrapper>
-						<Title>{movie.title}</Title>
-					</MovieImage>
-				</Card>
-			)}
-			<HoveredPreview movie={movie} show={hovered} changeIconState={changeIconState} unhover={handleUnhover} />
-		</>
+		<Wrapper hovered={hovered} onMouseEnter={handleHover} onMouseLeave={handleUnhover}>
+			<Preview movie={movie} show={!hovered} />
+			<HoveredPreview movie={movie} show={hovered} changeIconState={changeIconState} />
+		</Wrapper>
 	)
 }

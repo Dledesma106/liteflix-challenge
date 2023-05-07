@@ -1,72 +1,66 @@
-import { type MyMovie } from '@/backend/models/MyMovie'
-import { type Movie } from '@/lib/moviesApi'
+import { type MyMovie } from 'backend/models/MyMovie'
+import { type Movie } from 'lib/moviesApi'
+import { type MovieType } from './Dropdown/Dropdown'
 import MyMoviePreview from './MyMoviePreview'
 import MoviePreview from './MoviePreview'
-import { CarouselWrapper, Chevron, MoviesWrapper } from './styles'
+import { CarouselWrapper, ChevronUp, ChevronDown, MoviesWrapper } from './styles'
 import { useState } from 'react'
 import Dropdown from './Dropdown'
-import Image from 'next/image'
-import up from 'assets/up-arrow.svg'
-import down from 'assets/down-arrow.svg'
-import { type MovieType } from './Dropdown/Dropdown'
+import useMyMovies from '@/hooks/useMyMovies'
 
-interface props {
-	myMovies: MyMovie[]
+interface MovieCarouselProps {
 	popularMovies: Movie[]
 }
 
-const MovieCarousel = ({ myMovies, popularMovies }: props): JSX.Element => {
+const MovieCarousel = ({ popularMovies }: MovieCarouselProps): JSX.Element => {
 	const [showMyMovies, setShowMyMovies] = useState<boolean>(false)
 	const [popularMoviesState, setPopularMoviesState] = useState<Movie[]>(popularMovies)
-	const [movies, setMovies] = useState<MyMovie[] | Movie[]>(popularMovies)
-	const [movieOffset, setMovieOffset] = useState<number>(0)
+	const [carouselOffset, setCarouselOffset] = useState<number>(0)
+	const { myMovies } = useMyMovies()
+	const hideChevrons = !(myMovies.length >= 4 || !showMyMovies)
 
 	const setMoviesArray = (type: MovieType): void => {
 		if (type === 'MIS PELICULAS') {
-			setMovies(myMovies)
 			setShowMyMovies(true)
+			setCarouselOffset(0)
 		} else {
-			setMovies(popularMoviesState)
 			setShowMyMovies(false)
+			setCarouselOffset(0)
 		}
 	}
 
-	const changeIconState = (title: string, name: string, value: boolean): void => {
+	const changeIconsMovies = (title: string, name: string, value: boolean): void => {
 		setPopularMoviesState(
 			popularMoviesState.map((movie) => (movie.title === title ? { ...movie, [name]: value } : movie))
 		)
-		setMovies(popularMoviesState.map((movie) => (movie.title === title ? { ...movie, [name]: value } : movie)))
 	}
 
 	const prevMovie = (): void => {
-		setMovieOffset(movieOffset < 1 ? 0 : movieOffset - 1)
+		setCarouselOffset(carouselOffset < 1 ? 0 : carouselOffset - 1)
 	}
 
 	const nextMovie = (): void => {
-		if (movies.length <= 4) return
-		setMovieOffset(movieOffset > 3 ? 4 : movieOffset + 1)
+		if (myMovies.length <= 4) return
+		setCarouselOffset(carouselOffset > myMovies.length - 5 ? myMovies.length - 4 : carouselOffset + 1)
 	}
 
 	return (
 		<CarouselWrapper>
 			<Dropdown setMovies={setMoviesArray} />
-			<Chevron onClick={prevMovie} show={movies.length >= 4}>
-				<Image src={up} width={20} height={8} alt="chevron arriba" />
-			</Chevron>
+			<ChevronUp onClick={prevMovie} hidden={hideChevrons} width={20} height={8} />
 			<MoviesWrapper>
 				{showMyMovies
-					? movies
-							.slice(movieOffset, movieOffset + 4)
-							.map((movie: MyMovie | Movie, index: number) => <MyMoviePreview key={index} movie={movie as MyMovie} />)
-					: movies
-							.slice(movieOffset, movieOffset + 4)
-							.map((movie: Movie | MyMovie, index: number) => (
-								<MoviePreview key={index} changeIconState={changeIconState} movie={movie as Movie} />
+					? myMovies
+							.slice(carouselOffset, carouselOffset + 4)
+							.map((movie: MyMovie, index: number) => (
+								<MyMoviePreview key={index} movie={movie}/>
+							))
+					: popularMovies
+							.map((movie: Movie, index: number) => (
+								<MoviePreview key={index} changeIconState={changeIconsMovies} movie={movie} />
 							))}
 			</MoviesWrapper>
-			<Chevron onClick={nextMovie} show={movies.length >= 4}>
-				<Image src={down} width={20} height={8} alt="chevron arriba" />
-			</Chevron>
+			<ChevronDown onClick={nextMovie} hidden={hideChevrons} width={20} height={8} />
 		</CarouselWrapper>
 	)
 }

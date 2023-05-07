@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import styled from 'styled-components'
+import play from 'assets/play.svg'
+import plus from 'assets/plus.svg'
 
 export const Wrapper = styled.div`
 	display: flex;
@@ -26,12 +28,12 @@ export const ButtonWrapper = styled.div`
 	gap: 24px;
 `
 
-export const PlusIcon = styled(Image)`
+export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'icono de suma' })`
 	width: 16px;
 	height: 16px;
 `
 
-export const PlayIcon = styled(Image)`
+export const PlayIcon = styled(Image).attrs({ src: play, alt: 'icono de reproduccion' })`
 	width: 16px;
 	height: 16px;
 `

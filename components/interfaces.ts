@@ -1,7 +1,7 @@
-import { type HighlightedMovie, type Movie } from '@/lib/moviesApi'
-import { type MyMovie } from '@/backend/models/MyMovie'
+import { type HighlightedMovie, type Movie } from 'lib/moviesApi'
+import { type MyMovie } from 'backend/models/MyMovie'
 
-export interface props {
+export interface MoviesProps {
 	highlightedMovie: HighlightedMovie
 	popularMovies: Movie[]
 	myMovies: MyMovie[]

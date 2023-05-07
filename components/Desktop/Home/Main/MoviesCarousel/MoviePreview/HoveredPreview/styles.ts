@@ -13,10 +13,10 @@ export const Detail = styled.div`
 	background-color: #242424;
 	top: 120px;
 	padding: 0 16px 24px;
-	//overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 8px;
+	border-radius: 0 0 4px 4px;
 `
 
 export const MovieImage = styled.div<{ img: string }>`
@@ -30,6 +30,7 @@ export const MovieImage = styled.div<{ img: string }>`
 	flex-direction: column;
 	justify-content: end;
 	margin: 0;
+	border-radius: 4px 4px 0 0;
 	gap: 16px;
 `
 
@@ -37,7 +38,6 @@ export const Card = styled.div`
 	color: #fff;
 	display: flex;
 	flex-direction: column;
-	border-radius: 4px;
 	height: 247px;
 	width: 249px;
 	margin: 0;
@@ -51,11 +51,19 @@ export const Title = styled.h3`
 	line-height: 16px;
 `
 
-export const Description = styled.div`
+export const Description = styled.p`
 	font-family: 'Roboto', sans-serif;
 	font-size: 12px;
+	height: 30px;
+	position: relative;
+	top: -5px;
 	letter-spacing: normal;
 	text-align: left;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 `
 
 export const ItemsWrapper = styled.div`

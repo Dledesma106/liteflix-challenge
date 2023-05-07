@@ -1,9 +1,6 @@
 import { Card, Item, MenuHeader, RightWrapper, ItemsWrapper } from './styles'
-import Image from 'next/image'
-import cross from 'assets/cross.svg'
-import notification from 'assets/notification.svg'
-import profile from 'assets/profile.png'
-import AddMovieButton from '../AddMovieButton/AddMovieButton'
+import { NotificationIcon, ProfileIcon, Cross } from 'components/Common/styles'
+import UploadMovieButton from '../UploadMovieButton'
 
 const menuItems = [
 	'Inicio',
@@ -17,26 +14,26 @@ const menuItems = [
 	'Cerrar Sesion'
 ]
 
-interface props {
+interface MenuProps {
 	show: boolean
 	toggle: () => void
 }
 
-const Menu = ({ show, toggle }: props): JSX.Element => {
+const Menu = ({ show, toggle }: MenuProps): JSX.Element => {
 	return (
 		<>
 			{show && (
 				<Card>
 					<MenuHeader>
-						<Image onClick={toggle} src={cross} width={20} height={20} alt="cerrar menu" />
+						<Cross onClick={toggle} width={20} height={20} alt='cerrar menú'/>
 						<RightWrapper>
-							<Image src={notification} width={26} height={26} alt="icono de notificacion" />
-							<Image src={profile} width={40} height={40} alt="icono de perfil" />
+							<NotificationIcon width={26} height={26}/>
+							<ProfileIcon width={40} height={40}/>
 						</RightWrapper>
 					</MenuHeader>
 					<ItemsWrapper>
 						{menuItems.map((item, index) =>
-							item === 'Agregar Pelicula' ? <AddMovieButton menu key={index} /> : <Item key={index}>{item}</Item>
+							item === 'Agregar Pelicula' ? <UploadMovieButton menu key={index} /> : <Item key={index}>{item}</Item>
 						)}
 					</ItemsWrapper>
 				</Card>

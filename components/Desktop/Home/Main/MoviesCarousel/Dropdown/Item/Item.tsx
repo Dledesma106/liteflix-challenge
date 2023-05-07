@@ -1,6 +1,5 @@
-import { StyledItem } from './styles'
+import { StyledItem, TickIcon } from './styles'
 import { type DropdownItem } from '../Dropdown'
-import Image from 'next/image'
 import ok from 'assets/ok-tickmark.svg'
 
 interface props {
@@ -17,7 +16,7 @@ const Item = ({ item, selectItem }: props): JSX.Element => {
 			}}
 		>
 			{item.title}
-			{item.selected && <Image src={ok} width={12} height={8} alt="chequeado" />}
+			{item.selected && <TickIcon src={ok} width={12} height={8}/>}
 		</StyledItem>
 	)
 }

@@ -1,9 +1,9 @@
+import Image from 'next/image'
 import styled from 'styled-components'
+import down from 'assets/down-arrow.svg'
 
 export const Wrapper = styled.div`
-	margin-top: 64px;
 	margin-bottom: 24px;
-	width: 194px;
 	height: 18px;
 `
 
@@ -11,22 +11,22 @@ export const Clickable = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
+	gap: 10px;
 `
 
 export const Title = styled.h3`
 	font-size: 18px;
 	font-weight: 100;
-	//margin-right:11px;
 `
 
 export const DropdownCard = styled.div`
 	background-color: #242424;
-	position: relative;
-	right: 16px;
 	width: 241px;
 	height: 96px;
 	padding: 24px;
+	position: relative;
+	right: 6px;
 	z-index: 2;
 `
 
@@ -44,4 +44,7 @@ export const ItemsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+`
+
+export const ChevronDown = styled(Image).attrs({ src: down, alt: 'chevron abajo' })`
 `

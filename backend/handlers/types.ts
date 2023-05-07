@@ -1,7 +1,7 @@
 import { type NextApiRequest } from 'next'
 
 export interface NextConnectApiRequest extends NextApiRequest {
-	files: Express.Multer.File[]
+	file: Express.Multer.File
 	filename: string
 }
 

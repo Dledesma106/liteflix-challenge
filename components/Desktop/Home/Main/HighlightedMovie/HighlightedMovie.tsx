@@ -1,7 +1,6 @@
-import play from 'assets/play.svg'
-import plus from 'assets/plus.svg'
+
 import { Wrapper, MovieTitle, ButtonWrapper, Button, LiteflixOriginal, Bold, PlayIcon, PlusIcon } from './styles'
-import { type HighlightedMovie } from '@/lib/moviesApi'
+import { type HighlightedMovie } from 'lib/moviesApi'
 
 const HighlightedMovieInfo = ({ movie }: { movie: HighlightedMovie }): JSX.Element => {
 	return (
@@ -12,11 +11,11 @@ const HighlightedMovieInfo = ({ movie }: { movie: HighlightedMovie }): JSX.Eleme
 			<MovieTitle>{movie.title}</MovieTitle>
 			<ButtonWrapper>
 				<Button>
-					<PlayIcon src={play} width={9} height={12} alt="icono de reproduccion" />
+					<PlayIcon width={9} height={12}/>
 					Reproducir
 				</Button>
 				<Button transparent>
-					<PlusIcon src={plus} width={16} height={16} alt="icono de suma" />
+					<PlusIcon width={16} height={16} />
 					Mi lista
 				</Button>
 			</ButtonWrapper>

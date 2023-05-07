@@ -1,12 +1,8 @@
 import { StyledHeader, RightWrapper, LeftWrapper } from './styles'
-import logo from 'assets/logo.svg'
-import menu from 'assets/menu.svg'
-import Image from 'next/image'
-import notification from 'assets/notification.svg'
-import profile from 'assets/profile.png'
+import { Logo, MenuIcon, NotificationIcon, ProfileIcon } from 'components/Common/styles'
 import { useState } from 'react'
 import Menu from './Menu'
-import AddMovieButton from './AddMovieButton/AddMovieButton'
+import UploadMovieButton from './UploadMovieButton'
 
 const Header = (): JSX.Element => {
 	const [showMenu, setShowMenu] = useState<boolean>(false)
@@ -19,13 +15,13 @@ const Header = (): JSX.Element => {
 		<>
 			<StyledHeader>
 				<LeftWrapper>
-					<Image src={logo} width={113} height={34} alt="logo de liteflix" />
-					<AddMovieButton />
+					<Logo width={113} height={34} />
+					<UploadMovieButton />
 				</LeftWrapper>
 				<RightWrapper>
-					<Image onClick={toggleMenu} src={menu} width={27} height={12} alt="icono de menu" />
-					<Image src={notification} width={26} height={26} alt="icono de notificacion" />
-					<Image src={profile} width={40} height={40} alt="icono de perfil" />
+					<MenuIcon onClick={toggleMenu} width={27} height={12}/>
+					<NotificationIcon width={26} height={26}/>
+					<ProfileIcon width={40} height={40}/>
 				</RightWrapper>
 				<Menu show={showMenu} toggle={toggleMenu} />
 			</StyledHeader>

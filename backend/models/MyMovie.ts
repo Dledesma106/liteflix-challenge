@@ -8,6 +8,12 @@ export class MyMovie {
 
 	@prop({ type: String, required: true })
 	imagePath: string
+
+	@prop({ type: Boolean, required: true })
+	liked: boolean
+
+	@prop({ type: Boolean, required: true })
+	added: boolean
 }
 
 const MyMovieModel = getModelForClass(MyMovie)

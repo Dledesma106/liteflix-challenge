@@ -1,13 +1,18 @@
-import '@/styles/globals.css'
+import 'styles/globals.css'
 import type { AppProps } from 'next/app'
-import MovieFormProvider from 'context/MovieFormContext/MovieFormProvider'
+import UploadMovieModalProvider from 'context/UploadMovieModal/UploadMovieModalProvider'
+import MyMoviesProvider from '@/context/MyMovies/MyMoviesProvider'
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 	return (
 		<>
-			<MovieFormProvider>
-				<Component {...pageProps} />
-			</MovieFormProvider>
+			<MyMoviesProvider>
+				<UploadMovieModalProvider>
+					<Component {...pageProps} />
+				</UploadMovieModalProvider>
+			</MyMoviesProvider>
 		</>
 	)
 }
+
+export default App

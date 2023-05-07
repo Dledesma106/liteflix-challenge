@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import styled from 'styled-components'
+import plus from 'assets/plus.svg'
 
 export const Wrapper = styled.div<{ menu: boolean }>`
 	display: flex;
@@ -13,6 +15,9 @@ export const Wrapper = styled.div<{ menu: boolean }>`
             margin:52px 0;
             gap:16px;
         `}
+`
+
+export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'Icono de suma' })`
 `
 
 export const ButtonText = styled.p<{ menu: boolean }>`

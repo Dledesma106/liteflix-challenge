@@ -9,7 +9,6 @@ export const Home = (props: props): JSX.Element => {
 			<Wrapper img={props.highlightedMovie.imagePath} style={{ color: '#FFF' }}>
 				ESTO ES MOBILE
 			</Wrapper>
-			img={props.highlightedMovie.imagePath}
 		</MobileWrapper>
 	)
 }

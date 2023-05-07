@@ -1,4 +1,4 @@
-import { type Movie } from '@/lib/moviesApi'
+import { type Movie } from 'lib/moviesApi'
 import {
 	TitleWrapper,
 	Card,
@@ -24,7 +24,6 @@ interface props {
 	movie: Movie
 	show: boolean
 	changeIconState: (title: string, name: string, value: boolean) => void
-	unhover: () => void
 }
 
 interface HoveredIcons {
@@ -32,7 +31,7 @@ interface HoveredIcons {
 	liked: boolean
 }
 
-const HoveredPreview = ({ movie, unhover, show, changeIconState }: props): JSX.Element => {
+const HoveredPreview = ({ movie, show, changeIconState }: props): JSX.Element => {
 	const [hoveredIcons, setHoveredIcons] = useState<HoveredIcons>({
 		play: false,
 		liked: false
@@ -53,7 +52,7 @@ const HoveredPreview = ({ movie, unhover, show, changeIconState }: props): JSX.E
 	return (
 		<>
 			{show && (
-				<Card onMouseLeave={unhover}>
+				<Card>
 					<MovieImage img={movie.imagePath}>
 						<PlusWrapper>
 							<Image

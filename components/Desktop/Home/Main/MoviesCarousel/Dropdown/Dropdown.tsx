@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import { Wrapper, Title, DropdownCard, DropdownDiamond, Clickable, ItemsWrapper } from './styles'
-import Image from 'next/image'
-import down from 'assets/down-arrow.svg'
+import { Wrapper, Title, DropdownCard, DropdownDiamond, Clickable, ItemsWrapper, ChevronDown } from './styles'
 import Item from './Item'
 export type MovieType = 'POPULARES' | 'MIS PELICULAS'
 
@@ -52,7 +50,7 @@ const Dropdown = ({ setMovies }: props): JSX.Element => {
 					<Title>
 						Ver: <b>{currentType}</b>
 					</Title>
-					<Image src={down} width={11} height={5} alt="chevron abajo" />
+					<ChevronDown width={18} height={8} />
 				</Clickable>
 				{showDropdown && (
 					<DropdownCard>
