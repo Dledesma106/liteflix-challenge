@@ -5,16 +5,11 @@ import MyMovieModel from 'backend/models/MyMovie'
 
 const MyMovieController = {
 	post: async (req: NextConnectApiRequest, res: NextApiResponse<ResponseData>) => {
-		console.log('posting movie')
 		const { title, imagePath, liked, added } = req.body
-		console.log(`title: ${title as string}, imagePath: ${imagePath as string}`)
 		await dbConnect()
-		console.log('connected to db')
 		try {
 			const newMovie = await MyMovieModel.create({ title, imagePath, liked, added })
-			console.log('created new movie')
 			if (newMovie === undefined) return res.json({ statusCode: 400, data: { message: 'Could not add the movie' } })
-			console.log('closed db connection')
 			res.json({ statusCode: 200, data: { message: 'Movie added succesfully' } })
 		} catch (error) {
 			console.log(error)

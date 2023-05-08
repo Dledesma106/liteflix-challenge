@@ -1,5 +1,6 @@
 
-import { Wrapper, MovieTitle, ButtonWrapper, Button, LiteflixOriginal, Bold, PlayIcon, PlusIcon } from './styles'
+import { Wrapper, MovieTitle, ButtonWrapper } from './styles'
+import { Button, PlayIcon, PlusIcon, LiteflixOriginal, Bold } from 'components/Common/styles'
 import { type HighlightedMovie } from 'lib/moviesApi'
 
 const HighlightedMovieInfo = ({ movie }: { movie: HighlightedMovie }): JSX.Element => {

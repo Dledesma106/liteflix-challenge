@@ -1,31 +1,30 @@
-import { type MyMovie } from 'backend/models/MyMovie'
-import { type Movie } from 'lib/moviesApi'
-import MyMoviePreview from './MyMoviePreview'
-import MoviePreview from './MoviePreview'
-import { CarouselWrapper, MoviesWrapper } from './styles'
-import { ChevronUp, ChevronDown } from 'components/Common/styles'
+import type { Movie } from 'lib/moviesApi'
 import Dropdown from 'components/Common/Dropdown'
+import { CarouselWrapper, MoviesWrapper } from './styles'
 import useCarousel from '@/hooks/useCarousel'
+import { ChevronUp, ChevronDown } from '@/components/Common/styles'
+import type { MyMovie } from '@/backend/models/MyMovie'
+import MyMoviePreview from './MyMoviePreview/MyMoviePreview'
+import MoviePreview from './MoviePreview/MoviePreview'
 
-interface MovieCarouselProps {
-	popularMovies: Movie[]
+interface Props {
+    popularMovies: Movie[]
 }
 
-const MovieCarousel = ({ popularMovies }: MovieCarouselProps): JSX.Element => {
-	const {
-		setMoviesArray,
-		changeIconsMovies,
-		prevMovie,
-		nextMovie,
-		showMyMovies,
-		myMovies,
-		movies,
-		carouselOffset
-	} = useCarousel(popularMovies)
+const MovieCarousel = ({ popularMovies }: Props): JSX.Element => {
+  const {
+    setMoviesArray,
+    prevMovie,
+    nextMovie,
+    showMyMovies,
+    myMovies,
+    movies,
+    carouselOffset
+  } = useCarousel(popularMovies)
 	const hideChevrons = !(myMovies.length >= 4 || !showMyMovies)
 
-	return (
-		<CarouselWrapper>
+  return (
+    <CarouselWrapper>
 			<Dropdown setMovies={setMoviesArray} />
 			<ChevronUp onClick={prevMovie} hidden={hideChevrons} width={20} height={8} />
 			<MoviesWrapper>
@@ -37,12 +36,12 @@ const MovieCarousel = ({ popularMovies }: MovieCarouselProps): JSX.Element => {
 							))
 					: movies
 							.map((movie: Movie, index: number) => (
-								<MoviePreview key={index} changeIconState={changeIconsMovies} movie={movie} />
+								<MoviePreview key={index} movie={movie} />
 							))}
 			</MoviesWrapper>
 			<ChevronDown onClick={nextMovie} hidden={hideChevrons} width={20} height={8} />
 		</CarouselWrapper>
-	)
+  )
 }
 
 export default MovieCarousel
