@@ -1,16 +1,11 @@
 import { StyledHeader, RightWrapper, LeftWrapper } from './styles'
 import { Logo, MenuIcon, NotificationIcon, ProfileIcon } from 'components/Common/styles'
-import { useState } from 'react'
-import Menu from './Menu'
-import UploadMovieButton from './UploadMovieButton'
+import Menu from 'components/Common/Menu'
+import UploadMovieButton from 'components/Common/UploadMovieButton'
+import useMenu from '@/hooks/useMenu'
 
 const Header = (): JSX.Element => {
-	const [showMenu, setShowMenu] = useState<boolean>(false)
-
-	const toggleMenu = (): void => {
-		setShowMenu(!showMenu)
-	}
-
+	const { toggle, show } = useMenu()
 	return (
 		<>
 			<StyledHeader>
@@ -19,11 +14,11 @@ const Header = (): JSX.Element => {
 					<UploadMovieButton />
 				</LeftWrapper>
 				<RightWrapper>
-					<MenuIcon onClick={toggleMenu} width={27} height={12}/>
-					<NotificationIcon width={26} height={26}/>
-					<ProfileIcon width={40} height={40}/>
+					<MenuIcon onClick={toggle} width={27} height={12} />
+					<NotificationIcon width={26} height={26} />
+					<ProfileIcon width={40} height={40} />
 				</RightWrapper>
-				<Menu show={showMenu} toggle={toggleMenu} />
+				<Menu show={show} toggle={toggle} />
 			</StyledHeader>
 		</>
 	)

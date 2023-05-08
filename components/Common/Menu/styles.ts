@@ -1,32 +1,25 @@
 import styled from 'styled-components'
 
 export const Card = styled.div`
-	width: 761px;
-	height: 100%;
 	background-color: #242424;
 	position: absolute;
 	top: 0px;
 	right: 0px;
-	z-index: 5;
-	padding-left: 88px;
-	padding-top: 28px;
-	padding-right: 104px;
+
+	@media (min-width: 769px) {
+		width: 761px;
+		height: 100%;
+		z-index: 5;
+		padding: 28px 88px 0px 104px;
+	}
+
+	@media (max-width: 768px) {
+		width: 100%;
+		height: 100%;
+		padding: 16px 24px;
+	}
 `
 
-export const MenuHeader = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-`
-
-export const RightWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 40px;
-	justify-content: center;
-`
 export const Item = styled.div`
 	padding: 20px 0;
 	font-size: 22px;

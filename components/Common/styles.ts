@@ -9,21 +9,17 @@ import plus from 'assets/plus.svg'
 import play from 'assets/play.svg'
 import up from 'assets/up-arrow.svg'
 import down from 'assets/down-arrow.svg'
+import star from 'assets/star.svg'
 
-export const Logo = styled(Image).attrs({ src: logo, alt: 'logo de liteflix' })`
-`
+export const Logo = styled(Image).attrs({ src: logo, alt: 'logo de liteflix' })``
 
-export const MenuIcon = styled(Image).attrs({ src: menu, alt: 'icono de menu' })`
-`
+export const MenuIcon = styled(Image).attrs({ src: menu, alt: 'icono de menu' })``
 
-export const NotificationIcon = styled(Image).attrs({ src: notification, alt: 'icono de notificacion' })`
-`
+export const NotificationIcon = styled(Image).attrs({ src: notification, alt: 'icono de notificacion' })``
 
-export const ProfileIcon = styled(Image).attrs({ src: profile, alt: 'icono de perfil' })`
-`
+export const ProfileIcon = styled(Image).attrs({ src: profile, alt: 'icono de perfil' })``
 
-export const Cross = styled(Image).attrs({ src: cross })`
-`
+export const Cross = styled(Image).attrs({ src: cross })``
 
 export const Button = styled.div<{ transparent?: boolean }>`
 	display: flex;
@@ -45,15 +41,9 @@ export const Button = styled.div<{ transparent?: boolean }>`
     `}
 `
 
-export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'icono de suma' })`
-	width: 16px;
-	height: 16px;
-`
+export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'icono de suma' })``
 
-export const PlayIcon = styled(Image).attrs({ src: play, alt: 'icono de reproduccion' })`
-	width: 16px;
-	height: 16px;
-`
+export const PlayIcon = styled(Image).attrs({ src: play, alt: 'icono de reproduccion' })``
 
 export const LiteflixOriginal = styled.p`
 	font-size: 20px;
@@ -67,13 +57,15 @@ export const Bold = styled.span`
 export const ChevronUp = styled(Image).attrs({
 	src: up,
 	alt: 'chevron arriba'
-  })<({ hidden?: boolean })>`
-	${({ hidden }) => hidden as boolean && 'display:none;'}
+})<{ hidden?: boolean }>`
+	${({ hidden }) => (hidden as boolean) && 'display:none;'}
 `
 
 export const ChevronDown = styled(Image).attrs({
 	src: down,
 	alt: 'chevron abajo'
-  })<({ hidden?: boolean })>`
-	${({ hidden }) => hidden as boolean && 'display:none;'}
+})<{ hidden?: boolean }>`
+	${({ hidden }) => (hidden as boolean) && 'display:none;'}
 `
+
+export const StarIcon = styled(Image).attrs({ src: star, alt: 'icono de estrella' })``

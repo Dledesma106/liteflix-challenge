@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Wrapper, Title, DropdownCard, DropdownDiamond, Clickable, ItemsWrapper } from './styles'
+import { Wrapper, Title, Clickable } from './styles'
 import { ChevronDown } from 'components/Common/styles'
-import Item from './Item'
+import Card from './Card/Card'
 export type MovieType = 'POPULARES' | 'MIS PELICULAS'
 
 export interface DropdownItem {
@@ -9,35 +9,18 @@ export interface DropdownItem {
 	selected: boolean
 }
 
-const items: DropdownItem[] = [
-	{
-		title: 'POPULARES',
-		selected: true
-	},
-	{
-		title: 'MIS PELICULAS',
-		selected: false
-	}
-]
-
-interface props {
+interface DropdownProps {
 	setMovies: (type: MovieType) => void
 }
 
-const Dropdown = ({ setMovies }: props): JSX.Element => {
+const Dropdown = ({ setMovies }: DropdownProps): JSX.Element => {
 	const [currentType, setCurrentType] = useState<MovieType>('POPULARES')
-	const [dropdownItems, setDropdownItems] = useState<DropdownItem[]>(items)
 	const [showDropdown, setShowDropdown] = useState<boolean>(false)
 
 	const selectItem = (selectedItem: DropdownItem): void => {
 		setMovies(selectedItem.title)
 		setShowDropdown(false)
 		setCurrentType(selectedItem.title)
-		setDropdownItems(
-			dropdownItems.map((item) =>
-				item.title === selectedItem.title ? { ...item, selected: true } : { ...item, selected: false }
-			)
-		)
 	}
 
 	return (
@@ -53,16 +36,7 @@ const Dropdown = ({ setMovies }: props): JSX.Element => {
 					</Title>
 					<ChevronDown width={11} height={5} />
 				</Clickable>
-				{showDropdown && (
-					<DropdownCard>
-						<DropdownDiamond />
-						<ItemsWrapper>
-							{dropdownItems.map((item: DropdownItem, index: number) => (
-								<Item key={index} item={item} selectItem={selectItem} />
-							))}
-						</ItemsWrapper>
-					</DropdownCard>
-				)}
+				<Card show={showDropdown} selectItem={selectItem} />
 			</Wrapper>
 		</>
 	)

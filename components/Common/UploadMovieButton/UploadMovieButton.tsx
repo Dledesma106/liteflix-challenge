@@ -6,7 +6,7 @@ const UploadMovieButton = ({ menu }: { menu?: boolean }): JSX.Element => {
 
 	return (
 		<Wrapper menu={menu as boolean} onClick={toggleModal}>
-			<PlusIcon width={14} height={14}/>
+			<PlusIcon width={14} height={14} />
 			<ButtonText menu={menu as boolean}>Agregar Pelicula</ButtonText>
 		</Wrapper>
 	)

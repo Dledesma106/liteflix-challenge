@@ -1,4 +1,3 @@
-
 import { Wrapper, MovieTitle, ButtonWrapper } from './styles'
 import { Button, PlayIcon, PlusIcon, LiteflixOriginal, Bold } from 'components/Common/styles'
 import { type HighlightedMovie } from 'lib/moviesApi'
@@ -12,7 +11,7 @@ const HighlightedMovieInfo = ({ movie }: { movie: HighlightedMovie }): JSX.Eleme
 			<MovieTitle>{movie.title}</MovieTitle>
 			<ButtonWrapper>
 				<Button>
-					<PlayIcon width={9} height={12}/>
+					<PlayIcon width={9} height={12} />
 					Reproducir
 				</Button>
 				<Button transparent>

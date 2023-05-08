@@ -14,7 +14,8 @@ export const initialMovie = {
 	imagePath: '',
 	title: '',
 	added: false,
-	liked: false
+	liked: false,
+	pressed: false
 }
 
 const UploadMovieModal = ({ show, toggle }: UploadMovieModalProps): JSX.Element => {
@@ -35,19 +36,18 @@ const UploadMovieModal = ({ show, toggle }: UploadMovieModalProps): JSX.Element 
 			{show && (
 				<Overlay>
 					<Card>
-						<Cross onClick={reset} width={20} height={20}/>
-						{!submitted
-						? <MovieForm
-								movie={myMovie}
-								setMovie={setMyMovie}
-								uploadProgress={uploadProgress}
-								setUploadProgress={setUploadProgress}
-								uploadFailed={uploadFailed}
-								setUploadFailed={setUploadFailed}
-								setSubmitted={setSubmitted}
-							/>
-						: <Finished title={myMovie.title} reset={reset} />
-						}
+						<Cross onClick={reset} width={20} height={20} />
+						<MovieForm
+							movie={myMovie}
+							setMovie={setMyMovie}
+							uploadProgress={uploadProgress}
+							setUploadProgress={setUploadProgress}
+							uploadFailed={uploadFailed}
+							setUploadFailed={setUploadFailed}
+							setSubmitted={setSubmitted}
+							show={!submitted}
+						/>
+						<Finished title={myMovie.title} reset={reset} show={submitted} />
 					</Card>
 				</Overlay>
 			)}

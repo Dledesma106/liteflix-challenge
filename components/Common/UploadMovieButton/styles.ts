@@ -17,8 +17,7 @@ export const Wrapper = styled.div<{ menu: boolean }>`
         `}
 `
 
-export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'Icono de suma' })`
-`
+export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'Icono de suma' })``
 
 export const ButtonText = styled.p<{ menu: boolean }>`
 	margin-left: auto;

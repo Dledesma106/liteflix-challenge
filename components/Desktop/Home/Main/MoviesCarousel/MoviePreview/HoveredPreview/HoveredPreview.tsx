@@ -11,7 +11,6 @@ import {
 	PlusWrapper
 } from './styles'
 import playButton from 'assets/play-button.svg'
-import star from 'assets/star.svg'
 import plus from 'assets/plus.svg'
 import tick from 'assets/ok-tickmark.svg'
 import playFill from 'assets/play-button-fill.svg'
@@ -19,6 +18,7 @@ import likeFill from 'assets/like-fill.svg'
 import like from 'assets/like.svg'
 import Image from 'next/image'
 import { useState } from 'react'
+import { StarIcon } from '@/components/Common/styles'
 
 interface props {
 	movie: Movie
@@ -102,7 +102,7 @@ const HoveredPreview = ({ movie, show, changeIconState }: props): JSX.Element =>
 						<Description>{movie.description}</Description>
 						<ItemsWrapper>
 							<RatingWrapper>
-								<Image src={star} width={12} height={12} alt="icono de estrella" />
+								<StarIcon width={12} height={12} />
 								{movie.rating}
 							</RatingWrapper>
 							{movie.year}

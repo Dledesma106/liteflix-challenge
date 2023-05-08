@@ -21,6 +21,7 @@ export interface Movie {
 	year: string
 	liked: boolean
 	added: boolean
+	pressed: boolean
 }
 
 const apiKey = process.env.MOVIES_API_KEY ?? ''
@@ -38,10 +39,11 @@ function trimMovie(movie: MovieDTO, imageBase: string): Movie {
 		title: movie.title,
 		imagePath: `${imageBase}w500${movie.backdrop_path}`,
 		rating: movie.vote_average,
-		description: movie.overview.slice(0, 90),
+		description: movie.overview.slice(0, 120),
 		year: movie.release_date.slice(0, moviesCount),
 		liked: false,
-		added: false
+		added: false,
+		pressed: false
 	}
 }
 

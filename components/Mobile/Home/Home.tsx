@@ -10,7 +10,7 @@ export const Home = (props: MoviesProps): JSX.Element => {
 		<MobileWrapper>
 			<Wrapper img={props.highlightedMovie.imagePath} style={{ color: '#FFF' }}>
 				<Header />
-				<Main {...props}/>
+				<Main {...props} />
 			</Wrapper>
 		</MobileWrapper>
 	)

@@ -16,6 +16,7 @@ interface MovieFormProps {
 	uploadFailed: boolean
 	setUploadFailed: (failed: boolean) => void
 	setSubmitted: (submitted: boolean) => void
+	show: boolean
 }
 
 const MovieForm = ({
@@ -25,7 +26,8 @@ const MovieForm = ({
 	uploadProgress,
 	setUploadProgress,
 	uploadFailed,
-	setUploadFailed
+	setUploadFailed,
+	show
 }: MovieFormProps): JSX.Element => {
 	const [isUploading, setIsUploading] = useState<boolean>(false)
 	const [file, setFile] = useState<File | null>(null)
@@ -96,20 +98,23 @@ const MovieForm = ({
 		void uploadMovie(movie)
 	}
 	return (
-		<UploadForm onSubmit={handleSubmit}>
-			<Title>Agregar Película</Title>
-			{isUploading
-			? <LoadingBar
-					percentage={uploadProgress}
-					uploadFailed={uploadFailed}
-					upload={retryUpload}
-					cancel={handleCancel}
-				/>
-			: <FileInput onChange={imageChange} onDrop={onImageDrop} />
-			}
-			<TitleInput placeholder="título" onChange={titleChange} name="title" value={movie.title} />
-			<Button disabled={movie.imagePath === '' || movie.title === ''}> Subir Película </Button>
-		</UploadForm>
+		<>
+			{show && (
+				<UploadForm onSubmit={handleSubmit}>
+					<Title>Agregar Película</Title>
+					<LoadingBar
+						percentage={uploadProgress}
+						uploadFailed={uploadFailed}
+						upload={retryUpload}
+						cancel={handleCancel}
+						show={isUploading}
+					/>
+					<FileInput onChange={imageChange} onDrop={onImageDrop} show={!isUploading} />
+					<TitleInput placeholder="título" onChange={titleChange} name="title" value={movie.title} />
+					<Button disabled={movie.imagePath === '' || movie.title === ''}> Subir Película </Button>
+				</UploadForm>
+			)}
+		</>
 	)
 }
 

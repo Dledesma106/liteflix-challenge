@@ -54,7 +54,7 @@ export const Title = styled.h3`
 export const Description = styled.p`
 	font-family: 'Roboto', sans-serif;
 	font-size: 12px;
-	height: 30px;
+	height: 29px;
 	position: relative;
 	top: -5px;
 	letter-spacing: normal;

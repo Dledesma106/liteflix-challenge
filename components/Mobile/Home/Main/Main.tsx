@@ -4,12 +4,12 @@ import HighlightedMovieInfo from './HighlightedMovieInfo'
 import MovieCarousel from './MovieCarousel'
 
 const Main = ({ highlightedMovie, popularMovies }: MoviesProps): JSX.Element => {
-  return (
-    <StyledMain>
-        <HighlightedMovieInfo movie={highlightedMovie}/>
-        <MovieCarousel popularMovies={popularMovies}/>
-    </StyledMain>
-  )
+	return (
+		<StyledMain>
+			<HighlightedMovieInfo movie={highlightedMovie} />
+			<MovieCarousel popularMovies={popularMovies} />
+		</StyledMain>
+	)
 }
 
 export default Main

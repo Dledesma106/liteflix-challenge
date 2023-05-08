@@ -2,17 +2,18 @@ import { useState } from 'react'
 import type { MovieType } from '@/components/Common/Dropdown/Dropdown'
 import useMyMovies from './useMyMovies'
 import type { Movie } from '@/lib/moviesApi'
-import type { MyMovie } from '@/backend/models/MyMovie'
+import type { MyMovie } from 'backend/models/MyMovie'
 
 interface Carousel {
     setMoviesArray: (type: MovieType) => void
-    changeIconsMovies: (title: string, name: string, value: boolean) => void
+    changeIconsMovie: (title: string, name: string, value: boolean) => void
     prevMovie: () => void
     nextMovie: () => void
     showMyMovies: boolean
     myMovies: MyMovie[]
     movies: Movie[]
     carouselOffset: number
+	pressMovie: (title: string) => void
 }
 
 const useCarousel = (popularMovies: Movie[]): Carousel => {
@@ -30,7 +31,11 @@ const useCarousel = (popularMovies: Movie[]): Carousel => {
 		}
 	}
 
-	const changeIconsMovies = (title: string, name: string, value: boolean): void => {
+	const pressMovie = (title: string): void => {
+		setMovies(movies.map(movie => { return { ...movie, pressed: movie.title === title ? !movie.pressed : false } }))
+	}
+
+	const changeIconsMovie = (title: string, name: string, value: boolean): void => {
 		setMovies(
 			movies.map((movie) => (movie.title === title ? { ...movie, [name]: value } : movie))
 		)
@@ -45,7 +50,7 @@ const useCarousel = (popularMovies: Movie[]): Carousel => {
 		setCarouselOffset(carouselOffset > myMovies.length - 5 ? myMovies.length - 4 : carouselOffset + 1)
 	}
 
-    return { setMoviesArray, changeIconsMovies, prevMovie, nextMovie, showMyMovies, myMovies, movies, carouselOffset }
+    return { setMoviesArray, changeIconsMovie, prevMovie, nextMovie, showMyMovies, myMovies, movies, carouselOffset, pressMovie }
 }
 
 export default useCarousel

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { dbConnect, dbDisconnect } from 'lib/dbConnect'
-import MyMovieModel from 'backend/models/MyMovie'
+import MyMovieModel, { type MyMovie } from 'backend/models/MyMovie'
 import { formatIds } from 'lib/utils'
 import { getHighlightedMovie, getPopularMovies } from 'lib/moviesApi'
 import { type GetServerSidePropsContext } from 'next'
@@ -36,7 +36,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext): Promis
 	const dbMovies = await MyMovieModel.find()
 	const highlightedMovie = await getHighlightedMovie()
 	const popularMovies = (await getPopularMovies()).filter((movie) => movie.title !== highlightedMovie.title)
-	const myMovies = formatIds(dbMovies) // Hago esto porque el ObjectId de MongoDB no es serializable en React
+	const myMovies = formatIds(dbMovies).map((movie: MyMovie) => { return { ...movie, pressed: false } }) // Hago esto porque el ObjectId de MongoDB no es serializable en React
 	await dbDisconnect()
 	return { props: { highlightedMovie, popularMovies, myMovies } }
 }

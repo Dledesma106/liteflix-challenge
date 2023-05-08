@@ -14,6 +14,8 @@ export class MyMovie {
 
 	@prop({ type: Boolean, required: true })
 	added: boolean
+
+	pressed: boolean
 }
 
 const MyMovieModel = getModelForClass(MyMovie)

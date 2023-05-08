@@ -12,16 +12,8 @@ interface MovieCarouselProps {
 }
 
 const MovieCarousel = ({ popularMovies }: MovieCarouselProps): JSX.Element => {
-	const {
-		setMoviesArray,
-		changeIconsMovies,
-		prevMovie,
-		nextMovie,
-		showMyMovies,
-		myMovies,
-		movies,
-		carouselOffset
-	} = useCarousel(popularMovies)
+	const { setMoviesArray, changeIconsMovie, prevMovie, nextMovie, showMyMovies, myMovies, movies, carouselOffset } =
+		useCarousel(popularMovies)
 	const hideChevrons = !(myMovies.length >= 4 || !showMyMovies)
 
 	return (
@@ -32,13 +24,10 @@ const MovieCarousel = ({ popularMovies }: MovieCarouselProps): JSX.Element => {
 				{showMyMovies
 					? myMovies
 							.slice(carouselOffset, carouselOffset + 4)
-							.map((movie: MyMovie, index: number) => (
-								<MyMoviePreview key={index} movie={movie}/>
-							))
-					: movies
-							.map((movie: Movie, index: number) => (
-								<MoviePreview key={index} changeIconState={changeIconsMovies} movie={movie} />
-							))}
+							.map((movie: MyMovie, index: number) => <MyMoviePreview key={index} movie={movie} />)
+					: movies.map((movie: Movie, index: number) => (
+							<MoviePreview key={index} changeIconState={changeIconsMovie} movie={movie} />
+					  ))}
 			</MoviesWrapper>
 			<ChevronDown onClick={nextMovie} hidden={hideChevrons} width={20} height={8} />
 		</CarouselWrapper>

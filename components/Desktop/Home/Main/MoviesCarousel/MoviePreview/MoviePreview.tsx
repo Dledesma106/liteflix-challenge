@@ -2,7 +2,7 @@ import { type Movie } from 'lib/moviesApi'
 import { Wrapper } from './styles'
 import { useState } from 'react'
 import HoveredPreview from './HoveredPreview/HoveredPreview'
-import Preview from '../Common/Preview/Preview'
+import Preview from '../../../../../Common/Preview/Preview'
 
 interface MoviePreviewProps {
 	movie: Movie

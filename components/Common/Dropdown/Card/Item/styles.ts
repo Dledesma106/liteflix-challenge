@@ -10,8 +10,10 @@ export const StyledItem = styled.li<{ selected: boolean }>`
 	height: 16px;
 	font-size: 16px;
 	font-weight: 400;
-	
-	${({ selected }) => selected && `
+
+	${({ selected }) =>
+		selected &&
+		`
 		font-weight: 700;
 	`};
 `

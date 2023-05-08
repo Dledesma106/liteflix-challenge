@@ -1,5 +1,5 @@
 import { type MyMovie } from 'backend/models/MyMovie'
-import Preview from '../Common/Preview'
+import Preview from '../../../../../Common/Preview'
 import HoveredPreview from './HoveredPreview'
 import { Wrapper } from './styles'
 import { useState } from 'react'
