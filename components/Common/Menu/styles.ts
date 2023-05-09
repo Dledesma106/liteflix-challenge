@@ -2,8 +2,10 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
 	background-color: #242424;
-	
+	gap:65px;
 	@media (min-width: 769px) {
+		display: flex;
+		flex-direction: column;
 		position: absolute;
 		top: 0px;
 		right: 0px;
@@ -15,11 +17,11 @@ export const Card = styled.div`
 
 	@media (max-width: 768px) {
 		display: flex;
-		flex-direction: column;
 		width: 100%;
-		height: 100%;
+		height: auto;
+		flex-direction: column;
 		padding: 16px 24px;
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -31,12 +33,15 @@ export const Item = styled.div`
 	padding: 20px 0;
 	font-size: 22px;
 	font-weight: 100;
+	@media (max-width: 768px) {
+		font-size: 16px;
+	}
 `
 
 export const ItemsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: start;
-	justify-content: space-between;
-	margin-top: 65px;
+	height: 100%;
+	
 `
