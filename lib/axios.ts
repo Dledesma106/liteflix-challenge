@@ -14,8 +14,10 @@ export const uploadFileRequest = async (
 		setCancelTokenSourceRef(cancelTokenSource)
 		return cancelTokenSource.token
 	}
+
 	const formData = new FormData()
 	formData.append(fieldname, file)
+
 	const config: AxiosRequestConfig = {
 		headers: { 'content-type': 'multipart/form-data' },
 		onUploadProgress: (progressEvent) => {
@@ -24,6 +26,7 @@ export const uploadFileRequest = async (
 		},
 		cancelToken: getCancelToken()
 	}
+
 	try {
 		const response = await axios.post('/api/upload-movie-image', formData, config)
 		return response.data.data.imagePath

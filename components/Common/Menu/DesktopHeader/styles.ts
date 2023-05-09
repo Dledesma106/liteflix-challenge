@@ -13,4 +13,7 @@ export const RightWrapper = styled.div`
 	align-items: center;
 	gap: 40px;
 	justify-content: center;
+	@media (max-width: 768px) {
+		display: none !important;
+	}
 `

@@ -5,12 +5,19 @@ export const Wrapper = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	gap: 20px;
+	gap: 16px;
+	@media (max-width: 768px) {
+		width: 100%;
+		height: 81px;
+	}
 `
 export const Percentage = styled.h2`
 	font-size: 16px;
 	color: #fff;
 	align-self: start;
+	@media (max-width: 768px) {
+		font-size: 14px;
+	}
 `
 
 export const ProgressButton = styled.button.attrs({ type: 'button' })<{ completed: boolean }>`
@@ -22,15 +29,19 @@ export const ProgressButton = styled.button.attrs({ type: 'button' })<{ complete
 	font-family: Bebas Neue;
 	align-self: flex-end;
 
+	
 	${({ completed }) =>
-		completed &&
-		`
+		completed && `
         color:#64EEBC;
-    `}
+	`}
+
+	@media (max-width: 768px) {
+		font-size: 16px;
+	}
 `
 
 export const EmptyBar = styled.div`
-	width: 602px;
+	width: 100%;
 	height: 4px;
 	z-index: 5;
 	background-color: rgba(255, 255, 255, 0.5);

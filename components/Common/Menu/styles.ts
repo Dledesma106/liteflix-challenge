@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
 	background-color: #242424;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-
+	
 	@media (min-width: 769px) {
+		position: absolute;
+		top: 0px;
+		right: 0px;
 		width: 761px;
 		height: 100%;
 		z-index: 5;
@@ -14,9 +14,16 @@ export const Card = styled.div`
 	}
 
 	@media (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
 		width: 100%;
 		height: 100%;
 		padding: 16px 24px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
 	}
 `
 

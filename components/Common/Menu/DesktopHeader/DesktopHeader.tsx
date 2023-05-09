@@ -1,5 +1,5 @@
 import { Header, RightWrapper } from './styles'
-import { NotificationIcon, ProfileIcon, Cross } from 'components/Common/styles'
+import { NotificationIcon, ProfileIcon, Cross, Logo } from 'components/Common/styles'
 
 interface DesktopHeaderProps {
 	show: boolean
@@ -16,6 +16,8 @@ const DesktopHeader = ({ show, toggle }: DesktopHeaderProps): JSX.Element => {
 						<NotificationIcon width={26} height={26} />
 						<ProfileIcon width={40} height={40} />
 					</RightWrapper>
+					<Logo />
+					<ProfileIcon width={36} height={36} />
 				</Header>
 			)}
 		</>

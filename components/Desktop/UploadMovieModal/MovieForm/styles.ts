@@ -5,6 +5,9 @@ export const Title = styled.h2`
 	font-weight: 700;
 	color: #64eebc;
 	text-align: center;
+	@media (max-width: 768px) {
+		margin-bottom: 24px;
+	}
 `
 
 export const UploadForm = styled.form.attrs({ action: '', encType: 'multipart/form-data' })`
@@ -12,6 +15,7 @@ export const UploadForm = styled.form.attrs({ action: '', encType: 'multipart/fo
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	width: 100%;
 	gap: 48px;
 `
 
@@ -26,4 +30,22 @@ export const TitleInput = styled.input`
 	letter-spacing: 4px;
 	outline: none;
 	color: #fff;
+`
+
+export const ButtonWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	@media (max-width: 768px) {
+		margin-top: 48px;
+	}
+`
+
+export const InputWrapper = styled.div`
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	gap: 40px;
 `

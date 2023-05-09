@@ -1,7 +1,7 @@
 import { StyledMain } from './styles'
 import { type MoviesProps } from 'components/interfaces'
 import MoviesCarousel from './MoviesCarousel'
-import HighlightedMovie from './HighlightedMovie'
+import HighlightedMovie from './HighlightedMovieInfo'
 
 const Main = ({ highlightedMovie, popularMovies }: MoviesProps): JSX.Element => {
 	return (

@@ -12,8 +12,8 @@ const MobileHeader = ({ show, toggle }: MobileHeaderProps): JSX.Element => {
 			{show && (
 				<Header>
 					<Cross onClick={toggle} width={20} height={20} alt="cerrar menú" />
-					<Logo />
-					<ProfileIcon width={40} height={40} />
+					<Logo height={28} width={98}/>
+					<ProfileIcon width={36} height={36} />
 				</Header>
 			)}
 		</>

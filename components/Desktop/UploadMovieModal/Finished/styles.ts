@@ -8,11 +8,18 @@ export const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: 72px;
+	@media (max-width: 768px) {
+		margin-top: 120px;
+		gap: 133px;
+	}
 `
 
 export const Liteflix = styled(Image).attrs({ src: liteflix, alt: 'logo de liteflix' })`
 	width: 113px;
 	height: 34px;
+	@media (max-width: 768px) {
+		display: none !important;
+	}
 `
 
 export const TextWrapper = styled.div`
@@ -21,6 +28,9 @@ export const TextWrapper = styled.div`
 	gap: 20px;
 	justify-content: center;
 	align-items: center;
+	@media (max-width: 768px) {
+		gap: 32px;
+	}
 `
 
 export const Congratulations = styled.p`

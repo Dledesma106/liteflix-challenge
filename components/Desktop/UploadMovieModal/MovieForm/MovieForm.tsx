@@ -3,8 +3,8 @@ import { type MyMovie } from 'backend/models/MyMovie'
 import FileInput from './FileInput'
 import LoadingBar from './LoadingBar'
 import { uploadFileRequest, uploadMovie } from 'lib/axios'
-import { Button } from '../styles'
-import { UploadForm, Title, TitleInput } from './styles'
+import { Button, Exit } from '../styles'
+import { UploadForm, Title, TitleInput, ButtonWrapper, InputWrapper } from './styles'
 import { type CancelTokenSource } from 'axios'
 import useMyMovies from '@/hooks/useMyMovies'
 
@@ -17,6 +17,7 @@ interface MovieFormProps {
 	setUploadFailed: (failed: boolean) => void
 	setSubmitted: (submitted: boolean) => void
 	show: boolean
+	reset: () => void
 }
 
 const MovieForm = ({
@@ -27,7 +28,8 @@ const MovieForm = ({
 	setUploadProgress,
 	uploadFailed,
 	setUploadFailed,
-	show
+	show,
+	reset
 }: MovieFormProps): JSX.Element => {
 	const [isUploading, setIsUploading] = useState<boolean>(false)
 	const [file, setFile] = useState<File | null>(null)
@@ -71,6 +73,7 @@ const MovieForm = ({
 	const handleCancel = (): void => {
 		if (cancelTokenSourceRef.current !== null) {
 			cancelTokenSourceRef.current.cancel('Upload canceled by user.')
+			setUploadFailed(false)
 		}
 	}
 
@@ -102,16 +105,21 @@ const MovieForm = ({
 			{show && (
 				<UploadForm onSubmit={handleSubmit}>
 					<Title>Agregar Película</Title>
-					<LoadingBar
-						percentage={uploadProgress}
-						uploadFailed={uploadFailed}
-						upload={retryUpload}
-						cancel={handleCancel}
-						show={isUploading}
-					/>
-					<FileInput onChange={imageChange} onDrop={onImageDrop} show={!isUploading} />
-					<TitleInput placeholder="título" onChange={titleChange} name="title" value={movie.title} />
-					<Button disabled={movie.imagePath === '' || movie.title === ''}> Subir Película </Button>
+					<InputWrapper>
+						<LoadingBar
+							percentage={uploadProgress}
+							uploadFailed={uploadFailed}
+							upload={retryUpload}
+							cancel={handleCancel}
+							show={isUploading}
+						/>
+						<FileInput onChange={imageChange} onDrop={onImageDrop} show={!isUploading} />
+						<TitleInput placeholder="título" onChange={titleChange} name="title" value={movie.title} />
+					</InputWrapper>
+					<ButtonWrapper>
+						<Button disabled={movie.imagePath === '' || movie.title === ''}> Subir Película </Button>
+						<Exit onClick={reset}>Salir</Exit>
+					</ButtonWrapper>
 				</UploadForm>
 			)}
 		</>

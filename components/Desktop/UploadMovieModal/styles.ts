@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import Image from 'next/image'
-import cross from 'assets/cross.svg'
+import { Cross } from 'components/Common/styles'
 
 export const Overlay = styled.div`
 	position: fixed;
@@ -13,20 +12,36 @@ export const Overlay = styled.div`
 `
 
 export const Card = styled.div`
-	width: 730px;
-	height: 440px;
-	background: #242424;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translateY(-50%) translateX(-50%);
-	padding: 24px;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	background: #242424;
+	@media (min-width: 769px){
+		gap: 10px;
+		width: 730px;
+		height: 440px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		padding: 24px;
+	}
+	@media (max-width: 768px) {
+		gap: 72px;
+		width: 100%;
+		height: 100%;
+		padding: 16px 24px;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 `
 
-export const Cross = styled(Image).attrs({ src: cross, alt: 'cerrar ventana modal' })`
+export const ResponsiveCross = styled(Cross).attrs({ alt: 'cerrar ventana modal' })`
 	align-self: flex-end;
+	@media (max-width: 768px) {
+		display: none !important;
+	}
 `
 
 export const Button = styled.button.attrs({ type: 'submit' })<{ disabled?: boolean }>`
@@ -45,4 +60,19 @@ export const Button = styled.button.attrs({ type: 'submit' })<{ disabled?: boole
 		`
 		background-color:rgba(255, 255, 255, 0.5);
 	`}
+`
+
+export const Exit = styled.button.attrs({ type: 'button' })`
+	color: #fff;
+	background-color: #242424;
+	width: 248px;
+	height: 56px;
+	font-size: 18px;
+	font-family: Bebas Neue;
+	letter-spacing: 4px;
+	border: 2px rgba(255, 255, 255, 0.5) solid;
+	cursor: pointer;
+	@media (min-width: 769px) {
+		display: none !important;
+	}
 `

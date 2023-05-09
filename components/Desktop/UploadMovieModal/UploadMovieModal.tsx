@@ -1,8 +1,9 @@
 import { type MyMovie } from 'backend/models/MyMovie'
 import { useState } from 'react'
-import { Card, Overlay, Cross } from './styles'
+import { Card, Overlay, ResponsiveCross } from './styles'
 import Finished from './Finished'
 import MovieForm from './MovieForm'
+import Header from './Header/Header'
 
 interface UploadMovieModalProps {
 	show: boolean
@@ -36,7 +37,8 @@ const UploadMovieModal = ({ show, toggle }: UploadMovieModalProps): JSX.Element 
 			{show && (
 				<Overlay>
 					<Card>
-						<Cross onClick={reset} width={20} height={20} />
+						<ResponsiveCross onClick={reset} width={20} height={20} />
+						<Header reset={reset}/>
 						<MovieForm
 							movie={myMovie}
 							setMovie={setMyMovie}
@@ -46,6 +48,7 @@ const UploadMovieModal = ({ show, toggle }: UploadMovieModalProps): JSX.Element 
 							setUploadFailed={setUploadFailed}
 							setSubmitted={setSubmitted}
 							show={!submitted}
+							reset={reset}
 						/>
 						<Finished title={myMovie.title} reset={reset} show={submitted} />
 					</Card>
