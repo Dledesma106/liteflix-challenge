@@ -34,7 +34,7 @@ export const Card = styled.div`
 	@media (max-width: 500px) {
 		gap: 72px;
 		width: 100%;
-		height: 100%;
+		min-height: 812px;
 		padding: 16px 24px;
 		position: relative;
 		top: 0;
