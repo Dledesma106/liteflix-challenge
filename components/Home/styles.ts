@@ -9,6 +9,7 @@ export const Wrapper = styled.div<{ img: string }>`
 		justify-content: space-between;
 		padding: 32px 104px 62px;
 		height: 100vh;
+		gap: 64px;
 	}
 
 	@media (max-width: 500px) {

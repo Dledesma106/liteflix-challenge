@@ -88,7 +88,7 @@ const MovieForm = ({
 				setUploadFailed,
 				resetUpload
 			)
-			setMovie({ ...movie, imagePath })
+			setMovie({ ...movie, imagePath, imagePaths: { desktop: imagePath, mobile: imagePath } })
 		} catch (error) {}
 	}
 
