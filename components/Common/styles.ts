@@ -11,15 +11,25 @@ import up from 'assets/up-arrow.svg'
 import down from 'assets/down-arrow.svg'
 import star from 'assets/star.svg'
 
-export const Logo = styled(Image).attrs({ src: logo, alt: 'logo de liteflix' })``
+export const Logo = styled(Image).attrs({ src: logo, alt: 'logo de liteflix' })`
+	cursor: pointer;
+`
 
-export const MenuIcon = styled(Image).attrs({ src: menu, alt: 'icono de menu' })``
+export const MenuIcon = styled(Image).attrs({ src: menu, alt: 'icono de menu' })`
+	cursor: pointer;
+`
 
-export const NotificationIcon = styled(Image).attrs({ src: notification, alt: 'icono de notificacion' })``
+export const NotificationIcon = styled(Image).attrs({ src: notification, alt: 'icono de notificacion' })`
+	cursor: pointer;
+`
 
-export const ProfileIcon = styled(Image).attrs({ src: profile, alt: 'icono de perfil' })``
+export const ProfileIcon = styled(Image).attrs({ src: profile, alt: 'icono de perfil' })`
+	cursor: pointer;
+`
 
-export const Cross = styled(Image).attrs({ src: cross })``
+export const Cross = styled(Image).attrs({ src: cross })`
+	cursor: pointer;
+`
 
 export const Button = styled.div<{ transparent?: boolean }>`
 	display: flex;
@@ -32,7 +42,7 @@ export const Button = styled.div<{ transparent?: boolean }>`
 	align-items: center;
 	padding: 19px 61px;
 	background-color: #242424;
-
+	cursor: pointer;
 	${({ transparent }) =>
 		(transparent as boolean) &&
 		`
@@ -41,23 +51,24 @@ export const Button = styled.div<{ transparent?: boolean }>`
     `}
 `
 
-export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'icono de suma' })``
+export const PlusIcon = styled(Image).attrs({ src: plus, alt: 'icono de suma' })`
+	cursor: pointer;
+`
 
-export const PlayIcon = styled(Image).attrs({ src: play, alt: 'icono de reproduccion' })``
+export const PlayIcon = styled(Image).attrs({ src: play, alt: 'icono de reproduccion' })`
+	cursor: pointer;
+`
 
 export const LiteflixOriginal = styled.p`
 	font-size: 20px;
 	height: 20px;
 `
 
-export const Bold = styled.span`
-	font-weight: 700;
-`
-
 export const ChevronUp = styled(Image).attrs({
 	src: up,
 	alt: 'chevron arriba'
 })<{ hidden?: boolean }>`
+	cursor: pointer;
 	${({ hidden }) => (hidden as boolean) && 'display:none;'}
 `
 
@@ -65,7 +76,12 @@ export const ChevronDown = styled(Image).attrs({
 	src: down,
 	alt: 'chevron abajo'
 })<{ hidden?: boolean }>`
+	cursor: pointer;
 	${({ hidden }) => (hidden as boolean) && 'display:none;'}
 `
 
 export const StarIcon = styled(Image).attrs({ src: star, alt: 'icono de estrella' })``
+
+export const ClickableIcon = styled(Image)`
+	cursor: pointer;
+`

@@ -15,6 +15,8 @@ export class MyMovie {
 	@prop({ type: Boolean, required: true })
 	added: boolean
 
+	imagePaths: { desktop: string; mobile: string }
+
 	pressed: boolean
 }
 

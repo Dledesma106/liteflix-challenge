@@ -7,6 +7,7 @@ export const uploadFileRequest = async (
 	fieldname: string,
 	setProgress: (percent: number) => void,
 	setCancelTokenSourceRef: (cancel: any) => void,
+	setUploadFailed: (failed: boolean) => void,
 	reset: () => void
 ): Promise<string> => {
 	const getCancelToken = (): CancelToken => {
@@ -32,6 +33,7 @@ export const uploadFileRequest = async (
 		return response.data.data.imagePath
 	} catch (error) {
 		if (axios.isCancel(error)) reset()
+		else setUploadFailed(true)
 		throw new Error()
 	}
 }

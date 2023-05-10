@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import UploadMovieModalContext from './UploadMovieModalContext'
-import DesktopUploadMovieModal from 'components/Desktop/UploadMovieModal'
+import UploadMovieModal from 'components/UploadMovieModal'
 
 export interface ProviderProps {
 	children: JSX.Element | JSX.Element[]
@@ -18,7 +18,7 @@ const UploadMovieModalProvider = ({ children }: ProviderProps): JSX.Element => {
 	return (
 		<UploadMovieModalContext.Provider value={value}>
 			{children}
-			<DesktopUploadMovieModal show={show} toggle={toggleModal} />
+			<UploadMovieModal show={show} toggle={toggleModal} />
 		</UploadMovieModalContext.Provider>
 	)
 }

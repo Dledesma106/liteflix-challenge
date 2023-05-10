@@ -14,12 +14,12 @@ interface MulterS3File {
 	storageClass: string
 	serverSideEncryption: null
 	metadata: {
-	  fieldname: string
+		fieldname: string
 	}
 	location: string
 	etag: string
 	versionId: string
-  }
+}
 
 export interface NextConnectApiRequest extends NextApiRequest {
 	file: MulterS3File

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "npx prettier components/** backend/** context/** hooks/** lib/** pages/** --write"
   },
   "dependencies": {
     "@aws-sdk/abort-controller": "^3.0.0",

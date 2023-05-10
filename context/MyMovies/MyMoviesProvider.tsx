@@ -17,7 +17,11 @@ const MyMoviesProvider = ({ children }: ProviderProps): JSX.Element => {
 	}
 
 	const pressMovie = (_id: string): void => {
-		setMyMovies(myMovies.map(movie => { return { ...movie, pressed: movie._id === _id ? !movie.pressed : false } }))
+		setMyMovies(
+			myMovies.map((movie) => {
+				return { ...movie, pressed: movie._id === _id ? !movie.pressed : false }
+			})
+		)
 	}
 
 	const changeIcon = (_id: string, name: string, value: boolean): void => {

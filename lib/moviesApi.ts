@@ -15,7 +15,10 @@ export interface HighlightedMovie {
 
 export interface Movie {
 	title: string
-	imagePath: string
+	imagePaths: {
+		desktop: string
+		mobile: string
+	}
 	rating: number
 	description: string
 	year: string
@@ -26,6 +29,8 @@ export interface Movie {
 
 const apiKey = process.env.MOVIES_API_KEY ?? ''
 const moviesCount = 4
+const desktopWidth = 'w500'
+const mobileWidth = 'w342'
 
 function trimHighlightedMovie(movie: MovieDTO, imageBase: string): HighlightedMovie {
 	return {
@@ -37,7 +42,10 @@ function trimHighlightedMovie(movie: MovieDTO, imageBase: string): HighlightedMo
 function trimMovie(movie: MovieDTO, imageBase: string): Movie {
 	return {
 		title: movie.title,
-		imagePath: `${imageBase}w500${movie.backdrop_path}`,
+		imagePaths: {
+			desktop: `${imageBase}${desktopWidth}${movie.backdrop_path}`,
+			mobile: `${imageBase}${mobileWidth}${movie.backdrop_path}`
+		},
 		rating: movie.vote_average,
 		description: movie.overview.slice(0, 120),
 		year: movie.release_date.slice(0, moviesCount),
@@ -59,7 +67,7 @@ async function getBaseUrl(): Promise<string> {
 
 export async function getPopularMovies(): Promise<Movie[]> {
 	const movies = await getMovies(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
-	const popularMovies = movies.slice(0, 5)
+	const popularMovies = movies.slice(0, moviesCount + 1)
 	const baseUrl = await getBaseUrl()
 	return popularMovies.map((movie) => trimMovie(movie, baseUrl))
 }
