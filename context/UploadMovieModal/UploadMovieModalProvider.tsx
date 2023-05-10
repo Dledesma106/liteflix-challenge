@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import UploadMovieModalContext from './UploadMovieModalContext'
-import UploadMovieModal from 'components/UploadMovieModal'
+import UploadMovieModal from 'components/Home/UploadMovieModal'
 
 export interface ProviderProps {
 	children: JSX.Element | JSX.Element[]
