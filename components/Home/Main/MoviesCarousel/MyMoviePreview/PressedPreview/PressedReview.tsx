@@ -29,7 +29,7 @@ const PressedPreview = ({ movie, show, toggle }: PressedPreviewProps): JSX.Eleme
 	return (
 		<>
 			{show && (
-				<MovieImage img={movie.imagePath}>
+				<MovieImage imgs={movie.imagePaths}>
 					<IconsWrapper>
 						<Image
 							src={movie.added ? tick : plus}

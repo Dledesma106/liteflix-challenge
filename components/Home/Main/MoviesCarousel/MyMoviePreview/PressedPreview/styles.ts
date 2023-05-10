@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-export const MovieImage = styled.div<{ img: string }>`
-	background-image: linear-gradient(rgba(36, 36, 36, 0.7), rgba(36, 36, 36, 0.7)), url(${({ img }) => img});
+export const MovieImage = styled.div<{ imgs: { desktop: string, mobile: string } }>`
+	background-image: linear-gradient(rgba(36, 36, 36, 0.7), rgba(36, 36, 36, 0.7)), url(${({ imgs }) => imgs.desktop});
 	width: 327px;
 	height: 172px;
 	border-radius: 4px;
