@@ -36,8 +36,10 @@ export const TextWrapper = styled.div`
 export const Congratulations = styled.p`
 	font-size: 24px;
 	font-weight: 700;
+	text-align: center;
 `
 
 export const Text = styled.p`
 	font-size: 20px;
+	text-align: center;
 `
