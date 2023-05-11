@@ -49,7 +49,7 @@ const HoveredPreview = ({ movie, show }: HoveredPreviewProps): JSX.Element => {
 		<>
 			{show && (
 				<Card>
-					<MovieImage img={movie.imagePath}>
+					<MovieImage imgs={movie.imagePaths}>
 						<PlusWrapper>
 							<ClickableIcon
 								src={movie.added ? tick : plus}

@@ -1,118 +1,19 @@
-import { type ChangeEvent, type DragEvent, type FormEvent, type MutableRefObject, useState, useRef } from 'react'
-import { type MyMovie } from 'backend/models/MyMovie'
 import FileInput from './FileInput'
 import LoadingBar from './LoadingBar'
-import { uploadFileRequest, uploadMovie } from 'lib/axios'
 import { Button, Exit } from '../styles'
 import { UploadForm, Title, TitleInput, ButtonWrapper, InputWrapper } from './styles'
-import { type CancelTokenSource } from 'axios'
-import useMyMovies from '@/hooks/useMyMovies'
+import useUploadMovieModal from '@/hooks/useUploadMovieModal'
 
-interface MovieFormProps {
-	movie: MyMovie
-	setMovie: (movie: MyMovie) => void
-	uploadProgress: number
-	setUploadProgress: (progress: number) => void
-	uploadFailed: boolean
-	setUploadFailed: (failed: boolean) => void
-	setSubmitted: (submitted: boolean) => void
-	show: boolean
-	reset: () => void
-}
-
-const MovieForm = ({
-	setMovie,
-	setSubmitted,
-	movie,
-	uploadProgress,
-	setUploadProgress,
-	uploadFailed,
-	setUploadFailed,
-	show,
-	reset
-}: MovieFormProps): JSX.Element => {
-	const [isUploading, setIsUploading] = useState<boolean>(false)
-	const [file, setFile] = useState<File | null>(null)
-	const { addMovie } = useMyMovies()
-	const fieldName = 'image'
-	const cancelTokenSourceRef = useRef<CancelTokenSource>(null) as MutableRefObject<CancelTokenSource | null>
-	const resetUpload = (): void => {
-		setFile(null)
-		setUploadFailed(false)
-		setUploadProgress(0)
-		setIsUploading(false)
-	}
-	const titleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-		const { name, value } = e.target
-		setMovie({ ...movie, [name]: value })
-	}
-
-	const imageChange = (e: ChangeEvent<HTMLInputElement>): void => {
-		if (e.target.files?.length === undefined) return
-		void handleUpload(e.target.files[0])
-		setFile(e.target.files[0])
-	}
-
-	const onImageDrop = (e: DragEvent<HTMLDivElement>): void => {
-		e.preventDefault()
-		void handleUpload(e.dataTransfer.files[0])
-		setFile(e.dataTransfer.files[0])
-	}
-
-	const retryUpload = (): void => {
-		if (file === null) return
-		setUploadFailed(false)
-		setUploadProgress(0)
-		void handleUpload(file)
-	}
-
-	const setCancelTokenSourceRef = (cancel: CancelTokenSource): void => {
-		cancelTokenSourceRef.current = cancel
-	}
-
-	const handleCancel = (): void => {
-		if (cancelTokenSourceRef.current !== null) {
-			cancelTokenSourceRef.current.cancel('Upload canceled by user.')
-			setUploadFailed(false)
-		}
-	}
-
-	const handleUpload = async (file: File): Promise<void> => {
-		try {
-			setIsUploading(true)
-			const imagePath = await uploadFileRequest(
-				file,
-				fieldName,
-				setUploadProgress,
-				setCancelTokenSourceRef,
-				setUploadFailed,
-				resetUpload
-			)
-			setMovie({ ...movie, imagePath, imagePaths: { desktop: imagePath, mobile: imagePath } })
-		} catch (error) {}
-	}
-
-	const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
-		e.preventDefault()
-		setIsUploading(false)
-		setSubmitted(true)
-		addMovie(movie)
-		void uploadMovie(movie)
-	}
+const MovieForm = (): JSX.Element => {
+	const { handleSubmit, submitted, titleChange, movie, reset } = useUploadMovieModal()
 	return (
 		<>
-			{show && (
+			{!submitted && (
 				<UploadForm onSubmit={handleSubmit}>
 					<Title>Agregar Película</Title>
 					<InputWrapper>
-						<LoadingBar
-							percentage={uploadProgress}
-							uploadFailed={uploadFailed}
-							upload={retryUpload}
-							cancel={handleCancel}
-							show={isUploading}
-						/>
-						<FileInput onChange={imageChange} onDrop={onImageDrop} show={!isUploading} />
+						<LoadingBar />
+						<FileInput />
 						<TitleInput placeholder="título" onChange={titleChange} name="title" value={movie.title} />
 					</InputWrapper>
 					<ButtonWrapper>

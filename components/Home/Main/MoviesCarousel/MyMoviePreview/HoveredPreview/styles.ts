@@ -7,8 +7,8 @@ export const TitleWrapper = styled.div`
 	gap: 12px;
 `
 
-export const MovieImage = styled.div<{ img: string }>`
-	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #242424 100%), url('${(props) => props.img}');
+export const MovieImage = styled.div<{ imgs: { desktop: string, mobile: string } }>`
+	background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #242424 100%), url(${({ imgs }) => imgs.desktop});
 	background-size: cover;
 	color: #fff;
 	height: 100%;

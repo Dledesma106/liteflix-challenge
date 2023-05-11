@@ -1,27 +1,21 @@
+import useUploadMovieModal from '@/hooks/useUploadMovieModal'
 import { Wrapper, EmptyBar, FilledBar, Percentage, ProgressButton } from './styles'
 
-interface LoadingBarProps {
-	percentage: number
-	uploadFailed: boolean
-	upload: () => void
-	cancel: () => void
-	show: boolean
-}
-
-const LoadingBar = ({ percentage, uploadFailed, upload, cancel, show }: LoadingBarProps): JSX.Element => {
-	const completed = percentage === 100
+const LoadingBar = (): JSX.Element => {
+	const { uploadProgress, uploadFailed, retryUpload, handleCancel, isUploading } = useUploadMovieModal()
+	const completed = uploadProgress === 100
 	const progressButtonClick = (): void => {
-		if (uploadFailed) upload()
-		if (!completed) cancel()
+		if (uploadFailed) retryUpload()
+		if (!completed) handleCancel()
 	}
 
 	return (
 		<>
-			{show && (
+			{isUploading && (
 				<Wrapper>
-					<Percentage>{!uploadFailed ? `Cargando ${percentage}%` : '¡ERROR! NO SE PUDO CARGAR LA PELÍCULA'}</Percentage>
+					<Percentage>{!uploadFailed ? `Cargando ${uploadProgress}%` : '¡ERROR! NO SE PUDO CARGAR LA PELÍCULA'}</Percentage>
 					<EmptyBar>
-						<FilledBar percentage={percentage} failed={uploadFailed}></FilledBar>
+						<FilledBar percentage={uploadProgress} failed={uploadFailed}></FilledBar>
 					</EmptyBar>
 					<ProgressButton completed={completed && !uploadFailed} onClick={progressButtonClick}>
 						{uploadFailed ? 'reintentar' : completed ? '¡listo!' : 'cancelar'}

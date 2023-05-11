@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div<{ img: string }>`
 	@media (min-width: 501px) {
-		background-image: url('${(props) => props.img}');
+		background-image: url(${(props) => props.img});
 		background-size: cover;
+		background-position: center;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;

@@ -1,21 +1,17 @@
 import { Congratulations, Liteflix, Text, TextWrapper, Wrapper } from './styles'
 import { Button } from '../styles'
+import useUploadMovieModal from '@/hooks/useUploadMovieModal'
 
-interface FinishedProps {
-	title: string
-	reset: () => void
-	show: boolean
-}
-
-const Finished = ({ title, reset, show }: FinishedProps): JSX.Element => {
+const Finished = (): JSX.Element => {
+	const { submitted, movie, reset } = useUploadMovieModal()
 	return (
 		<>
-			{show && (
+			{submitted && (
 				<Wrapper>
 					<Liteflix height={34} width={113} />
 					<TextWrapper>
 						<Congratulations>¡Felicitaciones!</Congratulations>
-						<Text>{title} fue correctamente subida.</Text>
+						<Text>{movie.title} fue correctamente subida.</Text>
 					</TextWrapper>
 					<Button onClick={reset}>Ir a home</Button>
 				</Wrapper>
