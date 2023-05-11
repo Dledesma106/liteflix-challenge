@@ -68,7 +68,9 @@ async function getMovies(url: string): Promise<MovieDTO[]> {
 
 async function getBaseUrl(): Promise<string> {
 	const configRes = await axios.get(`https://api.themoviedb.org/3/configuration?api_key=${apiKey}`)
-	return configRes.data.images.base_url
+	const baseUrl: string = configRes.data.images.base_url
+	const safeBaseUrl = baseUrl.replace('http', 'https')
+	return safeBaseUrl
 }
 
 export async function getPopularMovies(): Promise<Movie[]> {
