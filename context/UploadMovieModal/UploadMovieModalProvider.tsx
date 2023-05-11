@@ -46,7 +46,6 @@ const UploadMovieModalProvider = ({ children }: ProviderProps): JSX.Element => {
 	}
 
 	const imageChange = (e: ChangeEvent<HTMLInputElement>): void => {
-		console.log('added file')
 		if (e.target.files?.length === undefined) return
 		void handleUpload(e.target.files[0])
 		setFile(e.target.files[0])
@@ -111,7 +110,27 @@ const UploadMovieModalProvider = ({ children }: ProviderProps): JSX.Element => {
 		setShow(!show)
 	}
 
-	const value = useMemo(() => ({ toggle, uploadProgress, uploadFailed, movie, submitted, isUploading, titleChange, imageChange, onImageDrop, retryUpload, handleCancel, handleSubmit, reset }), [show, isUploading, uploadFailed, uploadProgress, submitted, movie])
+	const value = useMemo(() => ({
+		toggle,
+		uploadProgress,
+		uploadFailed,
+		movie,
+		submitted,
+		isUploading,
+		titleChange,
+		imageChange,
+		onImageDrop,
+		retryUpload,
+		handleCancel,
+		handleSubmit,
+		reset
+	}), [show,
+		isUploading,
+		uploadFailed,
+		uploadProgress,
+		submitted,
+		movie
+	])
 
 	return (
 		<UploadMovieModalContext.Provider value={value}>
