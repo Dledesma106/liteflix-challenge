@@ -1,6 +1,6 @@
 # Liteflix
 
-This web application retrieves data from https://api.themoviedb.org/ to display a highlighted movie as the featured movie and 4 other popular movies in a caroussel with a Netflix-ish design
+This is a web application that retrieves data from https://api.themoviedb.org/ to display a highlighted movie as the featured movie and 4 other popular movies in a caroussel with a Netflix-ish design
 It also allows the user to upload a movie poster and title, and later check the list of movies added by the user
 
 This is a fullstack web coding challenge for Litebox, a company that builds web and mobile apps for clients in the United States. 
@@ -12,12 +12,26 @@ It's built using Next.js, with Styled Components on the frontend and Next-Connec
 
 ## Frontend
 
+### Styled-Components
+
 Styled-Components is a CSS-in-JS library that hides away all the css in your components, making them much more readable during development and maintenance.
 For every component I created, I created a folder with the component itself, a styles.ts file that holds the styles for that component and an index.ts file that exports the component itself. This lets me organize components with their styles, and shorten the import path.
 
+### Context
+
 For the movies added by the user I use a context with a state that holds the movies and is loaded with a useEffect at index.ts in the pages folder. The movies themselves are retrieved from the database in the getServerSideProps function and when a new movie is uploaded it's also added to context, making it visible right away in the movie carousel
-For the movies retrieved from themoviedb API I retrieve them in getServerSideProps as well, but I trim all the unnecesary info and build the urls for the desktop and mobile versions of the previews images. using media queries I display one or the other, the mobile versions being of a smaller resolution
- 
+For the movies retrieved from themoviedb API I retrieve them in getServerSideProps as well, but I trim all the unnecesary info and build the urls for the desktop and mobile versions of the previews images. using media queries I display one or the other, the mobile versions being of a smaller resolution to optimize loading times
+I also use a context for the upload modal, it handles all the logic and states of the modal, and renders it with the provider. It provides the function to toggle it, reset it and a lot of other flags and functions to handle the logic of the modal.
+both of these context are made available to a custom hook that returns the value object of the provider, making it user for the developer to use these contexts
+
+### Custom Hooks
+
+For the Carousel I simply use a hook and prop drill a few of the logic functions into the previews, is mostly there to shorten the component's code and separate logic from views
+The same is for the menu, even though there wasn't much logic to it is better for the header, this way it doesn't hold logic that serves the single purpose of controlling when the menu is displayed
+
+### Axios
+
+To handle the upload of the image and common HTTP request I use Axios, 
 
 ## Backend
 
