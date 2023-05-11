@@ -40,7 +40,7 @@ function trimHighlightedMovie(movie: MovieDTO, imageBase: string): HighlightedMo
 		title: movie.title,
 		imagePaths: {
 			desktop: `${imageBase}original${movie.backdrop_path}`,
-			mobile: `${imageBase}w500${movie.backdrop_path}`
+			mobile: `${imageBase}w780${movie.backdrop_path}`
 		}
 	}
 }
