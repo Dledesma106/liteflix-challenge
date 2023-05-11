@@ -18,7 +18,7 @@ const UploadMovieModal = ({ show }: UploadMovieModalProps): JSX.Element => {
 					<Card>
 						<ResponsiveCross onClick={reset} width={20} height={20} />
 						<Header reset={reset} />
-						<MovieForm	/>
+						<MovieForm />
 						<Finished />
 					</Card>
 				</Overlay>

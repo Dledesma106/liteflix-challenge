@@ -13,7 +13,9 @@ const LoadingBar = (): JSX.Element => {
 		<>
 			{isUploading && (
 				<Wrapper>
-					<Percentage>{!uploadFailed ? `Cargando ${uploadProgress}%` : '¡ERROR! NO SE PUDO CARGAR LA PELÍCULA'}</Percentage>
+					<Percentage>
+						{!uploadFailed ? `Cargando ${uploadProgress}%` : '¡ERROR! NO SE PUDO CARGAR LA PELÍCULA'}
+					</Percentage>
 					<EmptyBar>
 						<FilledBar percentage={uploadProgress} failed={uploadFailed}></FilledBar>
 					</EmptyBar>

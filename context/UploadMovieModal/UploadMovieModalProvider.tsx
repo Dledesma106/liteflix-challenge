@@ -1,4 +1,12 @@
-import { type ChangeEvent, type DragEvent, type FormEvent, type MutableRefObject, useMemo, useRef, useState } from 'react'
+import {
+	type ChangeEvent,
+	type DragEvent,
+	type FormEvent,
+	type MutableRefObject,
+	useMemo,
+	useRef,
+	useState
+} from 'react'
 import UploadMovieModalContext from './UploadMovieModalContext'
 import UploadMovieModal from 'components/Home/UploadMovieModal'
 import type { MyMovie } from 'backend/models/MyMovie'
@@ -110,27 +118,24 @@ const UploadMovieModalProvider = ({ children }: ProviderProps): JSX.Element => {
 		setShow(!show)
 	}
 
-	const value = useMemo(() => ({
-		toggle,
-		uploadProgress,
-		uploadFailed,
-		movie,
-		submitted,
-		isUploading,
-		titleChange,
-		imageChange,
-		onImageDrop,
-		retryUpload,
-		handleCancel,
-		handleSubmit,
-		reset
-	}), [show,
-		isUploading,
-		uploadFailed,
-		uploadProgress,
-		submitted,
-		movie
-	])
+	const value = useMemo(
+		() => ({
+			toggle,
+			uploadProgress,
+			uploadFailed,
+			movie,
+			submitted,
+			isUploading,
+			titleChange,
+			imageChange,
+			onImageDrop,
+			retryUpload,
+			handleCancel,
+			handleSubmit,
+			reset
+		}),
+		[show, isUploading, uploadFailed, uploadProgress, submitted, movie]
+	)
 
 	return (
 		<UploadMovieModalContext.Provider value={value}>
