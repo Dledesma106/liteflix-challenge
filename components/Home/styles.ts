@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div<{ img: string }>`
+export const Wrapper = styled.div<{ imgs: { desktop: string, mobile: string } }>`
 	@media (min-width: 501px) {
-		background-image: url(${(props) => props.img});
+		background-image: url(${({ imgs }) => imgs.desktop});
 		background-size: cover;
 		background-position: center;
 		display: flex;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div<{ img: string }>`
 
 	@media (max-width: 500px) {
 		padding: 16px 24px;
-		background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 65.6%, #242424 100%), url(${(props) => props.img});
+		background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 65.6%, #242424 100%), url(${({ imgs }) => imgs.mobile});
 		background-position: center top;
 		background-repeat: no-repeat;
 		background-size: 250% 561px;

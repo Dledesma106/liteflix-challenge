@@ -5,7 +5,7 @@ import { Wrapper } from './styles'
 
 const Home = (props: MoviesProps): JSX.Element => {
 	return (
-		<Wrapper img={props.highlightedMovie.imagePath}>
+		<Wrapper imgs={props.highlightedMovie.imagePaths}>
 			<Header />
 			<Main {...props} />
 		</Wrapper>

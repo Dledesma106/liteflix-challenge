@@ -21,17 +21,17 @@ For every component I created, I created a folder with the component itself, a s
 
 For the movies added by the user I use a context with a state that holds the movies and is loaded with a useEffect at index.ts in the pages folder. The movies themselves are retrieved from the database in the getServerSideProps function and when a new movie is uploaded it's also added to context, making it visible right away in the movie carousel
 For the movies retrieved from themoviedb API I retrieve them in getServerSideProps as well, but I trim all the unnecesary info and build the urls for the desktop and mobile versions of the previews images. using media queries I display one or the other, the mobile versions being of a smaller resolution to optimize loading times
-I also use a context for the upload modal, it handles all the logic and states of the modal, and renders it with the provider. It provides the function to toggle it, reset it and a lot of other flags and functions to handle the logic of the modal.
-both of these context are made available to a custom hook that returns the value object of the provider, making it user for the developer to use these contexts
+I also use a context for the upload modal, it handles all the logic and states of the modal, and renders it with the provider. It provides the function to toggle it, reset it and a many other flags and functions to handle the logic of the modal.
+both of these context are made available through custom hook that returns the value object of the provider, making it user for the developer to use these contexts
 
 ### Custom Hooks
 
-For the Carousel I simply use a hook and prop drill a few of the logic functions into the previews, is mostly there to shorten the component's code and separate logic from views
+For the Carousel I simply use a hook and prop drill a few of the logic functions into the previews, is mostly there to shorten the component's code and separate logic from visuals
 The same is for the menu, even though there wasn't much logic to it is better for the header, this way it doesn't hold logic that serves the single purpose of controlling when the menu is displayed
 
 ### Axios
 
-To handle the upload of the image and common HTTP request I use Axios, 
+To handle the upload of the image and common HTTP request I used Axios, mainly because it lets you send files and subscribe to the progress of the upload, as well as set a cancel token to cancel the upload at any time while it's uploading
 
 ## Backend
 

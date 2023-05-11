@@ -10,7 +10,10 @@ interface MovieDTO {
 
 export interface HighlightedMovie {
 	title: string
-	imagePath: string
+	imagePaths: {
+		desktop: string
+		mobile: string
+	}
 }
 
 export interface Movie {
@@ -35,7 +38,10 @@ const mobileWidth = 'w342'
 function trimHighlightedMovie(movie: MovieDTO, imageBase: string): HighlightedMovie {
 	return {
 		title: movie.title,
-		imagePath: `${imageBase}original${movie.backdrop_path}`
+		imagePaths: {
+			desktop: `${imageBase}original${movie.backdrop_path}`,
+			mobile: `${imageBase}w500${movie.backdrop_path}`
+		}
 	}
 }
 

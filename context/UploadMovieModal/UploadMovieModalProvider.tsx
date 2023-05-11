@@ -79,7 +79,6 @@ const UploadMovieModalProvider = ({ children }: ProviderProps): JSX.Element => {
 	const handleCancel = (): void => {
 		if (cancelTokenSourceRef.current !== null) {
 			cancelTokenSourceRef.current.cancel('Upload canceled by user.')
-			setUploadFailed(false)
 		}
 	}
 
